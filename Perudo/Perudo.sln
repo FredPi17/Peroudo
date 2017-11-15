@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2005
+VisualStudioVersion = 15.0.27004.2008
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Perudo", "Perudo\Perudo\Perudo.shproj", "{5DEA7D91-871D-4F78-9359-AB009A3EA3DF}"
 EndProject
@@ -25,6 +25,12 @@ Global
 		Ad-Hoc|iPhoneSimulator = Ad-Hoc|iPhoneSimulator
 		Ad-Hoc|x64 = Ad-Hoc|x64
 		Ad-Hoc|x86 = Ad-Hoc|x86
+		android|Any CPU = android|Any CPU
+		android|ARM = android|ARM
+		android|iPhone = android|iPhone
+		android|iPhoneSimulator = android|iPhoneSimulator
+		android|x64 = android|x64
+		android|x86 = android|x86
 		AppStore|Any CPU = AppStore|Any CPU
 		AppStore|ARM = AppStore|ARM
 		AppStore|iPhone = AppStore|iPhone
@@ -63,6 +69,24 @@ Global
 		{784445A2-BD5F-4D10-B387-1E2FAE313053}.Ad-Hoc|x86.ActiveCfg = Release|Any CPU
 		{784445A2-BD5F-4D10-B387-1E2FAE313053}.Ad-Hoc|x86.Build.0 = Release|Any CPU
 		{784445A2-BD5F-4D10-B387-1E2FAE313053}.Ad-Hoc|x86.Deploy.0 = Release|Any CPU
+		{784445A2-BD5F-4D10-B387-1E2FAE313053}.android|Any CPU.ActiveCfg = android|Any CPU
+		{784445A2-BD5F-4D10-B387-1E2FAE313053}.android|Any CPU.Build.0 = android|Any CPU
+		{784445A2-BD5F-4D10-B387-1E2FAE313053}.android|Any CPU.Deploy.0 = android|Any CPU
+		{784445A2-BD5F-4D10-B387-1E2FAE313053}.android|ARM.ActiveCfg = android|Any CPU
+		{784445A2-BD5F-4D10-B387-1E2FAE313053}.android|ARM.Build.0 = android|Any CPU
+		{784445A2-BD5F-4D10-B387-1E2FAE313053}.android|ARM.Deploy.0 = android|Any CPU
+		{784445A2-BD5F-4D10-B387-1E2FAE313053}.android|iPhone.ActiveCfg = android|Any CPU
+		{784445A2-BD5F-4D10-B387-1E2FAE313053}.android|iPhone.Build.0 = android|Any CPU
+		{784445A2-BD5F-4D10-B387-1E2FAE313053}.android|iPhone.Deploy.0 = android|Any CPU
+		{784445A2-BD5F-4D10-B387-1E2FAE313053}.android|iPhoneSimulator.ActiveCfg = android|Any CPU
+		{784445A2-BD5F-4D10-B387-1E2FAE313053}.android|iPhoneSimulator.Build.0 = android|Any CPU
+		{784445A2-BD5F-4D10-B387-1E2FAE313053}.android|iPhoneSimulator.Deploy.0 = android|Any CPU
+		{784445A2-BD5F-4D10-B387-1E2FAE313053}.android|x64.ActiveCfg = android|Any CPU
+		{784445A2-BD5F-4D10-B387-1E2FAE313053}.android|x64.Build.0 = android|Any CPU
+		{784445A2-BD5F-4D10-B387-1E2FAE313053}.android|x64.Deploy.0 = android|Any CPU
+		{784445A2-BD5F-4D10-B387-1E2FAE313053}.android|x86.ActiveCfg = android|Any CPU
+		{784445A2-BD5F-4D10-B387-1E2FAE313053}.android|x86.Build.0 = android|Any CPU
+		{784445A2-BD5F-4D10-B387-1E2FAE313053}.android|x86.Deploy.0 = android|Any CPU
 		{784445A2-BD5F-4D10-B387-1E2FAE313053}.AppStore|Any CPU.ActiveCfg = Release|Any CPU
 		{784445A2-BD5F-4D10-B387-1E2FAE313053}.AppStore|Any CPU.Build.0 = Release|Any CPU
 		{784445A2-BD5F-4D10-B387-1E2FAE313053}.AppStore|Any CPU.Deploy.0 = Release|Any CPU
@@ -125,6 +149,12 @@ Global
 		{FD2B19E2-72B9-40D8-AF68-81DF2803FDC6}.Ad-Hoc|iPhoneSimulator.Build.0 = Ad-Hoc|iPhoneSimulator
 		{FD2B19E2-72B9-40D8-AF68-81DF2803FDC6}.Ad-Hoc|x64.ActiveCfg = Ad-Hoc|iPhone
 		{FD2B19E2-72B9-40D8-AF68-81DF2803FDC6}.Ad-Hoc|x86.ActiveCfg = Ad-Hoc|iPhone
+		{FD2B19E2-72B9-40D8-AF68-81DF2803FDC6}.android|Any CPU.ActiveCfg = android|iPhone
+		{FD2B19E2-72B9-40D8-AF68-81DF2803FDC6}.android|ARM.ActiveCfg = android|iPhone
+		{FD2B19E2-72B9-40D8-AF68-81DF2803FDC6}.android|iPhone.ActiveCfg = android|iPhone
+		{FD2B19E2-72B9-40D8-AF68-81DF2803FDC6}.android|iPhoneSimulator.ActiveCfg = android|iPhoneSimulator
+		{FD2B19E2-72B9-40D8-AF68-81DF2803FDC6}.android|x64.ActiveCfg = android|iPhone
+		{FD2B19E2-72B9-40D8-AF68-81DF2803FDC6}.android|x86.ActiveCfg = android|iPhone
 		{FD2B19E2-72B9-40D8-AF68-81DF2803FDC6}.AppStore|Any CPU.ActiveCfg = AppStore|iPhoneSimulator
 		{FD2B19E2-72B9-40D8-AF68-81DF2803FDC6}.AppStore|ARM.ActiveCfg = AppStore|iPhone
 		{FD2B19E2-72B9-40D8-AF68-81DF2803FDC6}.AppStore|iPhone.ActiveCfg = AppStore|iPhone
@@ -167,6 +197,14 @@ Global
 		{84BD52CF-380E-4989-A13A-BB1BF22FAA10}.Ad-Hoc|x86.ActiveCfg = Release|x86
 		{84BD52CF-380E-4989-A13A-BB1BF22FAA10}.Ad-Hoc|x86.Build.0 = Release|x86
 		{84BD52CF-380E-4989-A13A-BB1BF22FAA10}.Ad-Hoc|x86.Deploy.0 = Release|x86
+		{84BD52CF-380E-4989-A13A-BB1BF22FAA10}.android|Any CPU.ActiveCfg = android|x86
+		{84BD52CF-380E-4989-A13A-BB1BF22FAA10}.android|ARM.ActiveCfg = android|ARM
+		{84BD52CF-380E-4989-A13A-BB1BF22FAA10}.android|iPhone.ActiveCfg = android|x86
+		{84BD52CF-380E-4989-A13A-BB1BF22FAA10}.android|iPhoneSimulator.ActiveCfg = android|x86
+		{84BD52CF-380E-4989-A13A-BB1BF22FAA10}.android|x64.ActiveCfg = android|x64
+		{84BD52CF-380E-4989-A13A-BB1BF22FAA10}.android|x64.Deploy.0 = android|x64
+		{84BD52CF-380E-4989-A13A-BB1BF22FAA10}.android|x86.ActiveCfg = android|x86
+		{84BD52CF-380E-4989-A13A-BB1BF22FAA10}.android|x86.Deploy.0 = android|x86
 		{84BD52CF-380E-4989-A13A-BB1BF22FAA10}.AppStore|Any CPU.ActiveCfg = Release|x86
 		{84BD52CF-380E-4989-A13A-BB1BF22FAA10}.AppStore|Any CPU.Build.0 = Release|x86
 		{84BD52CF-380E-4989-A13A-BB1BF22FAA10}.AppStore|Any CPU.Deploy.0 = Release|x86
@@ -187,8 +225,6 @@ Global
 		{84BD52CF-380E-4989-A13A-BB1BF22FAA10}.AppStore|x86.Deploy.0 = Release|x86
 		{84BD52CF-380E-4989-A13A-BB1BF22FAA10}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{84BD52CF-380E-4989-A13A-BB1BF22FAA10}.Debug|ARM.ActiveCfg = Debug|ARM
-		{84BD52CF-380E-4989-A13A-BB1BF22FAA10}.Debug|ARM.Build.0 = Debug|ARM
-		{84BD52CF-380E-4989-A13A-BB1BF22FAA10}.Debug|ARM.Deploy.0 = Debug|ARM
 		{84BD52CF-380E-4989-A13A-BB1BF22FAA10}.Debug|iPhone.ActiveCfg = Debug|x86
 		{84BD52CF-380E-4989-A13A-BB1BF22FAA10}.Debug|iPhoneSimulator.ActiveCfg = Debug|x86
 		{84BD52CF-380E-4989-A13A-BB1BF22FAA10}.Debug|x64.ActiveCfg = Debug|x64

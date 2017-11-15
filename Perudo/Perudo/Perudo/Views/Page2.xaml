@@ -6,7 +6,9 @@
         <StackLayout>
             <Label Text="Welcome to second page!"
                 VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+                HorizontalOptions="CenterAndExpand" 
+            />
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
