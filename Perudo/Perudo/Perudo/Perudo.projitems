@@ -30,9 +30,3 @@
   </ItemGroup>
 <<<<<<< HEAD
 </Project>
-=======
-  <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Views\" />
-  </ItemGroup>
-</Project>
->>>>>>> master
