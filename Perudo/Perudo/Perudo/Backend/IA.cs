@@ -6,5 +6,8 @@ namespace Perudo.Backend
 {
     class IA
     {
+        ///Propriétés
+        ///Constructeur
+        ///Méthodes
     }
 }
