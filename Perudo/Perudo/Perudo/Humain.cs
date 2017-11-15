@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Perudo
 {
-    class Joueur
+    class Humain
     {
         string nom;
         string prenom;
