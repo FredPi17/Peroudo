@@ -8,13 +8,15 @@
             <Label Text="Hello, XAML!"
                    VerticalOptions="Center"
                    HorizontalTextAlignment="Center"
-                   Rotation="-15"
                    IsVisible="true"
                    FontSize="Large"
                    FontAttributes="Bold"
                    TextColor="Blue" />
-        
             
+            <Button x:Name="localModeBtn" 
+                    Text="local mode" 
+                    Clicked="localModeBtn_Click" />
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

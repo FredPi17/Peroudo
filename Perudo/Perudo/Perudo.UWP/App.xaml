@@ -3,6 +3,10 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Perudo.UWP"
+    xmlns:forms="http://xamarin.com/schemas/2014/forms"
     RequestedTheme="Light">
-    
+
+    <Application.Resources>
+        
+    </Application.Resources>
 </Application>
