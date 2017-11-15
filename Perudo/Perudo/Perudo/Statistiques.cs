@@ -6,7 +6,9 @@ namespace Perudo
 {
     class Statistiques
     {
-        public int nbPartie;
+        public int nbPartie; //Nombre de partie
+        public int nbManche; //Nombre de manches par partie
+        public string meilleurJoueur; //Le meilleur joueur de la partie
 
     }
 }
