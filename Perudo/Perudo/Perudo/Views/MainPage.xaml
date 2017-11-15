@@ -5,16 +5,25 @@
              x:Class="Perudo.MainPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Hello, XAML!"
+            <Label Text="BIENVENUE DANS LE JEU DU PERUDO"
                    VerticalOptions="Center"
                    HorizontalTextAlignment="Center"
-                   Rotation="-15"
                    IsVisible="true"
                    FontSize="Large"
                    FontAttributes="Bold"
                    TextColor="Blue" />
-        
+
+            <Button Text="COMMENCER A JOUER"
+                    HorizontalOptions="Center"
+                    VerticalOptions="CenterAndExpand" 
+                    FontSize="20"/>
             
+            <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+                <StackPanel>
+                    <HyperlinkButton NavigateUri="/page2.xaml" Content="Navigation State" />
+                </StackPanel>
+            </Grid>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

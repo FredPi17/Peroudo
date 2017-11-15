@@ -1,29 +1,48 @@
-﻿   <Import_RootNamespace>Perudo</Import_RootNamespace> 
-  </PropertyGroup> 
-  <ItemGroup> 
-    <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs"> 
-    <Compile Include="$(MSBuildThisFileDirectory)Views\App.xaml.cs"> 
-      <DependentUpon>App.xaml</DependentUpon> 
-    </Compile> 
-    <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs"> 
-    <Compile Include="$(MSBuildThisFileDirectory)Views\MainPage.xaml.cs"> 
-      <DependentUpon>MainPage.xaml</DependentUpon> 
-    </Compile> 
-  </ItemGroup> 
-  <ItemGroup> 
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)MainPage.xaml"> 
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MainPage.xaml"> 
-      <SubType>Designer</SubType> 
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator> 
-    </EmbeddedResource> 
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml"> 
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\App.xaml"> 
-      <SubType>Designer</SubType> 
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator> 
-    </EmbeddedResource> 
-  </ItemGroup> 
-</Project> 
-  <ItemGroup> 
-    <Folder Include="$(MSBuildThisFileDirectory)Views\" /> 
-  </ItemGroup> 
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>5dea7d91-871d-4f78-9359-ab009a3ea3df</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Perudo</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Joueur.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Statistiques.cs" />
+<<<<<<< Updated upstream
+    <Compile Include="$(MSBuildThisFileDirectory)Sauvegarde.cs" />
+=======
+    <Compile Include="$(MSBuildThisFileDirectory)Views\page2.xaml.cs">
+      <DependentUpon>page2.xaml</DependentUpon>
+    </Compile>
+>>>>>>> Stashed changes
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+<<<<<<< Updated upstream
+<<<<<<< HEAD
+=======
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)Views\page2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+>>>>>>> Stashed changes
 </Project>
