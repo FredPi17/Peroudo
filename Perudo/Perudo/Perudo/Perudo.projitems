@@ -17,7 +17,13 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Statistiques.cs" />
+<<<<<<< Updated upstream
     <Compile Include="$(MSBuildThisFileDirectory)Sauvegarde.cs" />
+=======
+    <Compile Include="$(MSBuildThisFileDirectory)Views\page2.xaml.cs">
+      <DependentUpon>page2.xaml</DependentUpon>
+    </Compile>
+>>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MainPage.xaml">
@@ -29,5 +35,14 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
+<<<<<<< Updated upstream
 <<<<<<< HEAD
+=======
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)Views\page2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+>>>>>>> Stashed changes
 </Project>
