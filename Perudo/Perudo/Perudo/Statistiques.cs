@@ -6,9 +6,7 @@ namespace Perudo
 {
     class Statistiques
     {
-        public nbPartie {
-            get;
-            set;
-        }
+        public int nbPartie;
+
     }
 }
