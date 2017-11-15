@@ -20,7 +20,6 @@ namespace Perudo.UWP
         public MainPage()
         {
             this.InitializeComponent();
-
             LoadApplication(new Perudo.App());
         }
     }

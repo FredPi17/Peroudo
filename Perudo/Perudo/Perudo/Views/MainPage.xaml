@@ -5,9 +5,16 @@
              x:Class="Perudo.MainPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label Text="Hello, XAML!"
+                   VerticalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   Rotation="-15"
+                   IsVisible="true"
+                   FontSize="Large"
+                   FontAttributes="Bold"
+                   TextColor="Blue" />
+        
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
