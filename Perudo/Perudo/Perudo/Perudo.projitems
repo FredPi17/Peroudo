@@ -9,21 +9,26 @@
     <Import_RootNamespace>Perudo</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Joueur.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Backend\Des.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Backend\Humain.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Backend\IA.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Backend\Jouer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Backend\Manche.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Backend\Partie.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Backend\Sauvegarde.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Backend\Statistiques.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Backend\Tour.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Backend\views.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Statistiques.cs" />
-<<<<<<< Updated upstream
-    <Compile Include="$(MSBuildThisFileDirectory)Sauvegarde.cs" />
-=======
-    <Compile Include="$(MSBuildThisFileDirectory)Views\page2.xaml.cs">
-      <DependentUpon>page2.xaml</DependentUpon>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Page2.xaml.cs">
+      <DependentUpon>Page2.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
->>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MainPage.xaml">
@@ -35,14 +40,10 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-=======
   <ItemGroup>
-    <Page Include="$(MSBuildThisFileDirectory)Views\page2.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Page2.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
->>>>>>> Stashed changes
 </Project>

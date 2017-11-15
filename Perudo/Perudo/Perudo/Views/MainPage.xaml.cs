@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Perudo.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,5 +14,10 @@ namespace Perudo
 		{
 			InitializeComponent();
 		}
+	    async void localModeBtn_Click(object sender, EventArgs e)
+	    {
+            var np = new NavigationPage(new Page2());
+	        Application.Current.MainPage = np;
+	    }
 	}
-}
+   }
