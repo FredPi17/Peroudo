@@ -7,5 +7,6 @@ namespace Perudo.Backend
     class Statistiques
     {
         //test
+
     }
 }
