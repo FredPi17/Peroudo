@@ -30,10 +30,16 @@ namespace Perudo.Backend
             myNiveau = choix;
         }
         
-        ///Méthodes
-        
-        public void Jouer(int de, int nb, int nbjoueur)
+        /// <summary>
+        /// Cette méthode permet a l'IA de jouer
+        /// </summary>
+        /// <param name="de">le numéro du de</param>
+        /// <param name="nb">le nombre de des</param>
+        /// <param name="nbDeTable">le nombre de des encore en jeu</param>
+        /// <returns>le choix de l'IA</returns>
+        public string Jouer(int de, int nb, int nbDeTable)
         {
+            string res;
             switch (myNiveau)
             {
                 case Niveau.Facile:
@@ -42,7 +48,7 @@ namespace Perudo.Backend
                         int choix = rng.Next(0, 6);
                         if (choix == 0)
                         {
-                            ///bluff
+                            res = "bluff";
                         }
                         else if (choix == 1)
                         {
@@ -62,14 +68,14 @@ namespace Perudo.Backend
                         }
                         else if (choix == 5)
                         {
-                            ///colza
+                            res = "calza";
                         }
                     }
                     break;
 
                 case Niveau.Moyen:
                     {
-                        if (nb > nbjoueur)
+                        if (nb > nbDeTable)
                         {
                             if (de != 0)///perudo
                             {
@@ -83,11 +89,11 @@ namespace Perudo.Backend
                                 int choix = rng.Next(0, 2);
                                 if (choix == 0)
                                 {
-                                    ///bluff
+                                    res = "bluff";
                                 }
                                 else if (choix == 1)
                                 {
-                                    ///colza
+                                    res = "calza";
                                 }
                             } 
                         }
