@@ -6,22 +6,32 @@ namespace Perudo
 {
     class Joueur 
     {
-        int type { get; set; }
-        void TypeJoueur()
+        enum Type
         {
-            if (type == 1)
+            ordinateur,
+            humain
+        }
+        public void TypeJoueur()
+        {
+            bool joueur = true; // A remplacer par la variable qui indique si on veut une ia ou un joueur
+            if (joueur == true)
             {
-
+                Type type = Type.humain;
             }
+            else
+            { 
+                Type type = Type.ordinateur;
+            }
+            return Type;
         }
 
         public void CompteurDes()
         {
-            int compteur = 5;
+            int compteur = 5; // A remplacer par la variable qui indique le nombre de dés d'un joueur
             bool calza = false;
             bool dudo = false;
             bool perdu = false;
-
+            
             if (compteur > 0)
             {
                 if (dudo == true) // Si le joueur a perdu la manche
@@ -37,6 +47,8 @@ namespace Perudo
             }
             if (compteur == 0) // Si le joueur a perdu tous ses dés
                 perdu = true;
+
+            return (compteur, perdu);
         }
     }
 }
