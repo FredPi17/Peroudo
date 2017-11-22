@@ -5,7 +5,7 @@
              x:Class="Perudo.MainPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Hello, XAML!"
+            <Label Text="BIENVENUE AU PERUDO !"
                    VerticalOptions="Center"
                    HorizontalTextAlignment="Center"
                    IsVisible="true"
@@ -14,7 +14,7 @@
                    TextColor="Blue" />
             
             <Button x:Name="localModeBtn" 
-                    Text="local mode" 
+                    Text="COMMENCER" 
                     Clicked="localModeBtn_Click" />
 
         </StackLayout>

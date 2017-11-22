@@ -1,14 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             
              x:Class="Perudo.Views.Page2">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to second page!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" 
+            <Label Text="Veuillez sélectionner le nombre de joueurs"
+                HorizontalOptions="CenterAndExpand"
+                MarginTop="20"
             />
+            <Button Name="btnOK"
+                    Click="ButtonClicked">OK</Button>
 
+            <TextBlock Text="The text contents of this TextBlock element."/>
+            
+            
         </StackLayout>
+        
     </ContentPage.Content>
 </ContentPage>
