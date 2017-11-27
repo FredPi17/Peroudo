@@ -6,5 +6,14 @@ namespace Perudo.Backend
 {
     class Humain
     {
+        string nom;
+        string prenom;
+        string pseudo;
+        string Getpseudo()
+        {
+            string pjoueur = pseudo;
+            
+            return pjoueur;
+        }
     }
 }
