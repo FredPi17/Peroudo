@@ -40,6 +40,14 @@ namespace Perudo
                 mesDes.Add(d);
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>Le type du joueur</returns>
+        TypeJoueur GetTypeJoueur()
+        {
+            return typeJ;
+        }
     }
 
 }
