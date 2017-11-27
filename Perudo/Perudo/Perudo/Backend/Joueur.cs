@@ -26,4 +26,16 @@ namespace Perudo
         }
         int CompteDés = 5;
     }
+
+    interface Joueur
+    {
+        Type typeJoueur; //le type du joueur
+
+        int nbdes; //le nombre de des du joueur
+
+        void Joueur(Type joueur) { } //constructeur
+
+        int GetNbDes() { } //renvoi le nombre de des du joueur
+
+    }
 }
