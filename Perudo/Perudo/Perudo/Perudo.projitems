@@ -12,7 +12,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Backend\Des.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Backend\Humain.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Backend\IA.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Backend\Jouer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Backend\Manche.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Backend\Partie.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Backend\Sauvegarde.cs" />
