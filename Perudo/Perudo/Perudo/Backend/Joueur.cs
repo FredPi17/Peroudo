@@ -16,7 +16,7 @@ namespace Perudo
         /// 
         /// </summary>
         /// <returns>Le nombre de dés du joueur</returns>
-        int GetNbDes()
+        public int GetNbDes()
         {
             return nbDes;
         }
@@ -24,7 +24,7 @@ namespace Perudo
         /// 
         /// </summary>
         /// <returns>Une liste avec la valeur de chaque dés du Joueur</returns>
-        List<Des> GetDes()
+        public List<Des> GetDes()
         {
             return mesDes;
         }
@@ -32,7 +32,7 @@ namespace Perudo
         /// 
         /// </summary>
         /// <param name="nbDes">Lance tous les dés du joueur</param>
-        void SetDes(int nbDes)
+        public void SetDes(int nbDes)
         {
             foreach(Des d in mesDes)
             {
@@ -44,10 +44,11 @@ namespace Perudo
         /// 
         /// </summary>
         /// <returns>Le type du joueur</returns>
-        TypeJoueur GetTypeJoueur()
+        public TypeJoueur GetTypeJoueur()
         {
             return typeJ;
         }
+        public abstract Backend.Action Jouer();
     }
 
 }
