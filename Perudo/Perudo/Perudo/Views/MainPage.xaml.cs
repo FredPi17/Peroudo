@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-
 namespace Perudo
 {
 	public partial class MainPage : ContentPage
@@ -14,10 +13,11 @@ namespace Perudo
 		{
 			InitializeComponent();
 		}
-	    async void localModeBtn_Click(object sender, EventArgs e)
+	    void localModeBtn_Click(object sender, EventArgs e)
 	    {
             var np = new NavigationPage(new Page2());
 	        Application.Current.MainPage = np;
 	    }
+	    
 	}
    }

@@ -16,5 +16,13 @@ namespace Perudo.Views
 		{
 			InitializeComponent ();
 		}
-	}
+	    void submit_Clicked(object sender, EventArgs e)
+        { 
+            var humains = Humans.Text;
+	        var machine = Machine.Text;
+            var np = new NavigationPage(new Page3());
+	        Application.Current.MainPage = np;
+	    }
+
+    }
 }
