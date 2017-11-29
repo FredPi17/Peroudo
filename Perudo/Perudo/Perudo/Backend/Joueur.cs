@@ -5,12 +5,12 @@ using System.Text;
 
 namespace Perudo
 {  
-    abstract class Joueur 
+    public abstract class Joueur 
     {
         ///Propriétées
         protected TypeJoueur typeJ;
         protected int nbDes = 5;
-        protected List<Des> mesDes = new List<Des>();
+        protected List<Des> mesDes = new List<Des>(5);
         
         /// <summary>
         /// 
@@ -34,6 +34,7 @@ namespace Perudo
         /// <param name="nbDes">Lance tous les dés du joueur</param>
         public void SetDes(int nbDes)
         {
+            mesDes.RemoveRange(0, 5);
             foreach(Des d in mesDes)
             {
                 d.DiceRoll();

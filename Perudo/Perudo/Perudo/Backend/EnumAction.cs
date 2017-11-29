@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Perudo.Backend
 {
-    enum Action
+    public enum Action
     {
         encherir = 0,
         bluff = 1,
