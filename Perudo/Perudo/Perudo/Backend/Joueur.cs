@@ -22,12 +22,18 @@ namespace Perudo
             SetDes();
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>Donne l'id du joueur</returns>
         public int GetId()
         {
             return id;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>Si le joueur a encore des dés </returns>
         public bool IsAlive()
         {
             return alive;
@@ -83,9 +89,13 @@ namespace Perudo
         {
             return typeJ;
         }
+
         public abstract Backend.Action Jouer();
-
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="idJoueur">le numéro du joueur qui a perdu ou ganger un dé</param>
+        /// <param name="perdu">vrai, le joueur perds un dé, faux le joueur gagne un dé</param>
         public abstract void Resultat(int idJoueur, bool perdu);
     }
 
