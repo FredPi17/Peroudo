@@ -28,5 +28,10 @@ namespace Perudo.Backend
         {
             return pseudo;
         }
+
+        public Backend.Action Jouer()
+        {
+            ///a completer
+        }
     }
 }
