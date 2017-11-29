@@ -11,6 +11,8 @@ namespace Perudo
         protected TypeJoueur typeJ;
         protected int nbDes = 5;
         protected List<Des> mesDes = new List<Des>(5);
+        protected int id;
+        protected bool alive = true;
 
         private Randomizer randomizer;
 
@@ -18,6 +20,17 @@ namespace Perudo
         {
             this.randomizer = randomizer;
             SetDes();
+        }
+
+
+        public int GetId()
+        {
+            return id;
+        }
+
+        public bool IsAlive()
+        {
+            return alive;
         }
 
         /// <summary>
@@ -73,7 +86,7 @@ namespace Perudo
         public abstract Backend.Action Jouer();
 
 
-        public abstract void Resultat(string pseudoJoueur, bool perdu);
+        public abstract void Resultat(int idJoueur, bool perdu);
     }
 
 }
