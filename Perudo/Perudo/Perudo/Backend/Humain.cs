@@ -26,13 +26,17 @@ namespace Perudo.Backend
             throw new NotImplementedException;
         }
 
-        public void Resultat(string pseudoJoueur, bool perdu)
+        public void Resultat(int indexJoueur, bool perdu)
         {
-            if (pseudo == pseudoJoueur)
+            if (index == indexJoueur)
             {
                 if (perdu == true)
                 {
                     nbDes--;
+                    if (nbDes == 0)
+                    {
+                        alive = false;
+                    }
                 } else if (nbDes < 5)
                 {
                     nbDes++;
