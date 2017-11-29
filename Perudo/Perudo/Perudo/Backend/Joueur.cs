@@ -11,7 +11,15 @@ namespace Perudo
         protected TypeJoueur typeJ;
         protected int nbDes = 5;
         protected List<Des> mesDes = new List<Des>(5);
-        
+
+        private Randomizer randomizer;
+
+        public Joueur(Randomizer randomizer)
+        {
+            this.randomizer = randomizer;
+            SetDes();
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -31,14 +39,24 @@ namespace Perudo
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="nbDes">Lance tous les dés du joueur</param>
-        public void SetDes(int nbDes)
+        /// <param name="nombre">Modifie le nombre de des du joueur</param>
+        public void SetNbDes(int nombre)
         {
-            mesDes.RemoveRange(0, 5);
-            foreach(Des d in mesDes)
+            nbDes = nombre;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nbDes">Lance tous les dés du joueur</param>
+        public void SetDes()
+        {
+            //mesDes.RemoveRange(0, 4);
+            for (int i = 0; i <= nbDes; i++)
             {
+                Des d = new Des(randomizer);
                 d.DiceRoll();
                 mesDes.Add(d);
+                Console.WriteLine(mesDes[i].valeur);
             }
         }
         /// <summary>
