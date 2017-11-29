@@ -5,26 +5,26 @@ using System.Text;
 
 namespace Perudo.Backend
 {
-    class Humain : Joueur
+    public class Humain : Joueur
     {
-        string nom;
-        string prenom;
-        string pseudo;
+        private string nom;
+        private string prenom;
+        private string pseudo;
 
-        Humain(string pseudo)
+        public Humain(string pseudo)
         {
-            typeJ = TypeJoueur.Humain;
+            typeJ = TypeJoueur.humain;
             this.pseudo = pseudo;
         }
 
-        Humain(string nom, string prenom, string pseudo)
+        public Humain(string nom, string prenom, string pseudo)
         {
-            typeJ = TypeJoueur.Humain;
+            typeJ = TypeJoueur.humain;
             this.nom = nom;
             this.prenom = prenom;
             this.pseudo = pseudo;
         }
-        string Getpseudo()
+        public string Getpseudo()
         {
             return pseudo;
         }
