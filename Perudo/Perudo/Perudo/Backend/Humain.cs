@@ -11,13 +11,15 @@ namespace Perudo.Backend
         private string prenom;
         private string pseudo;
 
-        public Humain(string pseudo)
+        public Humain(string pseudo, Randomizer randomizer)
+            : base(randomizer)
         {
             typeJ = TypeJoueur.humain;
             this.pseudo = pseudo;
         }
 
-        public Humain(string nom, string prenom, string pseudo)
+        public Humain(string nom, string prenom, string pseudo, Randomizer randomizer)
+            : base(randomizer)
         {
             typeJ = TypeJoueur.humain;
             this.nom = nom;
@@ -31,7 +33,7 @@ namespace Perudo.Backend
 
         public Backend.Action Jouer()
         {
-            ///a completer
+            throw new NotImplementedException;
         }
     }
 }
