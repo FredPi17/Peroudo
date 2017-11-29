@@ -16,8 +16,9 @@ namespace Perudo
 
         private Randomizer randomizer;
 
-        public Joueur(Randomizer randomizer)
+        public Joueur(int id, Randomizer randomizer)
         {
+            this.id = id;
             this.randomizer = randomizer;
             SetDes();
         }
