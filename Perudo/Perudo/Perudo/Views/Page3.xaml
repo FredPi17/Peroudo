@@ -2,6 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Perudo.Views.Page3">
+    xmlns:constants="clr-namespace:XamarinFormsSample;assembly=XamarinFormsXamlSample"
+    x:Class="XamarinFormsXamlSample.Views.EmployeeListPage"
+    Title="Employee List">
     <ContentPage.Content>
         <StackLayout>
             <Grid>
@@ -19,19 +22,32 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <ContentView Grid.Row="0" Grid.Column="0">
-                    <Label x:Name="Player1" Text="Player 1"/>
-                    <Label x:Name="Player2" Text="Player 2"/>
-                    <Label x:Name="Player3" Text="Player 3"/>
-                    <Label x:Name="Player4" Text="Player 4"/>
-                    <Label x:Name="Player5" Text="Player 5"/>
-                    <Label x:Name="Player6" Text="Player 6"/>
-                </ContentView>
+                
+                <ListView x:Name="EmployeeView">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding DisplayName}" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
                 <Button x:Name="Valider" Text="Valider" Clicked="Clicked_validate" Grid.Row="5" Grid.Column="3"/>
                 <Button x:Name="Kelza" Text="Kelza" Clicked="Click_Kelza" Grid.Row="4" Grid.Column="3"/>
                 <Button x:Name="Bluff" Text="Bluff" Clicked="Click_Bluff" Grid.Row="4" Grid.Column="2"/>
                 <Label x:Name="Round" Text="Round 3" Grid.Row="0" Grid.Column="3" FontSize="25"/>
-                <Entry x:Name="Dés" Placeholder="Nombre de dés" Grid.Row="3" Grid.Column="2"/>
+                <Grid Grid.Row="3" Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Entry x:Name="DésValues" Placeholder="Nombre de dés" Grid.Row="0" Grid.Column="0"/>
+                    <Label x:Name="Dés" Text="Dés" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center"/>
+                </Grid>
+                
                 <Entry x:Name="ValeursDés" Placeholder="Valeurs des dés" Grid.Row="3" Grid.Column="3"/>
                 
                 <Label Text="0 1" Grid.Row="0" Grid.Column="1"/>

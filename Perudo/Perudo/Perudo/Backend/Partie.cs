@@ -4,7 +4,10 @@ using System.Text;
 
 namespace Perudo.Backend
 {
-    class Partie
+    public class Partie
     {
+    }
+    public static void Kelza() {
+    
     }
 }
