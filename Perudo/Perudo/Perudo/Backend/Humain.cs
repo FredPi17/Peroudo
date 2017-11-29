@@ -26,9 +26,9 @@ namespace Perudo.Backend
             throw new NotImplementedException;
         }
 
-        public void Resultat(int indexJoueur, bool perdu)
+        public void Resultat(int idJoueur, bool perdu)
         {
-            if (index == indexJoueur)
+            if (id == idJoueur)
             {
                 if (perdu == true)
                 {
