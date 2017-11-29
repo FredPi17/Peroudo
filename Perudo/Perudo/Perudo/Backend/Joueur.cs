@@ -71,6 +71,9 @@ namespace Perudo
             return typeJ;
         }
         public abstract Backend.Action Jouer();
+
+
+        public abstract void Resultat(string pseudoJoueur, bool perdu);
     }
 
 }
