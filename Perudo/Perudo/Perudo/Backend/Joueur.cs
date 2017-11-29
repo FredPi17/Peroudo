@@ -50,8 +50,12 @@ namespace Perudo
         /// <param name="nbDes">Lance tous les dés du joueur</param>
         public void SetDes()
         {
-            //mesDes.RemoveRange(0, 4);
-            for (int i = 0; i <= nbDes; i++)
+            if (mesDes != null)
+            {
+                mesDes.RemoveRange(0, 4);
+            } else { }
+           
+            for (int i = 0; i < nbDes; i++)
             {
                 Des d = new Des(randomizer);
                 d.DiceRoll();
