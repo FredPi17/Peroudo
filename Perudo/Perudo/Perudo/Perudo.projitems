@@ -15,6 +15,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Backend\Jouer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Backend\Manche.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Backend\Partie.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Backend\Randomizer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Backend\Sauvegarde.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Backend\Statistiques.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Backend\Tour.cs" />

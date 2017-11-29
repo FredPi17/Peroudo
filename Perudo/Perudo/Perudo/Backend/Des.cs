@@ -4,15 +4,24 @@ using System.Text;
 
 namespace Perudo.Backend
 {
-    class Des
+    public class Des
     {
-        public int DiceRoll()
+        public string valeur;
+        private Randomizer randomizer;
+
+        public Des(Randomizer randomizer)
+        {
+            this.randomizer = randomizer;
+            valeur = this.DiceRoll();
+        }
+
+        public string DiceRoll()
         {
             int result;
-            Random rnd = new Random();
+            string valeur;
 
-            result = rnd.Next(1, 7);
-            return result;
+            string toto = randomizer.Next(1, 7).ToString();
+            return toto;
         }
     }
 }
