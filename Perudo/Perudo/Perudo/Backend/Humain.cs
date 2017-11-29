@@ -21,12 +21,12 @@ namespace Perudo.Backend
             return pseudo;
         }
 
-        public Backend.Action Jouer()
+        public  override Backend.Action Jouer()
         {
             throw new NotImplementedException;
         }
 
-        public void Resultat(int idJoueur, bool perdu)
+        public override void Resultat(int idJoueur, bool perdu)
         {
             if (id == idJoueur)
             {
