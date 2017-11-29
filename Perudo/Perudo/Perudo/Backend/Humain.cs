@@ -9,8 +9,8 @@ namespace Perudo.Backend
     {
         private string pseudo;
 
-        public Humain(string pseudo, Randomizer randomizer)
-            : base(randomizer)
+        public Humain(string pseudo, int id, Randomizer randomizer)
+            : base(id, randomizer)
         {
             typeJ = TypeJoueur.humain;
             this.pseudo = pseudo;
