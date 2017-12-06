@@ -4,6 +4,12 @@ using System.Text;
 
 namespace Perudo.Backend
 {
+    public enum Action
+    {
+        encherir = 0,
+        bluff = 1,
+        calza = 2
+    }
     public class Decision
     {
         public Action actionEncours;
@@ -38,20 +44,19 @@ namespace Perudo.Backend
         /// </summary>
         /// <param name="choix">Le choix du niveau</param>
         /// <param name="id">l'index ou le numéro du joueur</param>
+        /// <param name="pseudo">Le pseudo de l'IA</param>
         /// <param name="randomizer">pour les dés</param>
-        public IA(Niveau choix, int id, Randomizer randomizer)
-            : base (id, randomizer)
+        public IA(Niveau choix, int id, string pseudo, Randomizer randomizer)
+            : base (id, pseudo, randomizer)
         {
             myNiveau = choix;
             typeJ = TypeJoueur.ordinateur;
         }
                 
         /// <summary>
-        /// Cette méthode permet a l'IA de jouer
+        /// Permet a l'IA de jouer
         /// </summary>
-        /// <param name="de">le numéro du de</param>
-        /// <param name="nb">le nombre de des</param>
-        /// <param name="nbDeTable">le nombre de des encore en jeu</param>
+        /// <returns>une decision</returns>
         public Decision Jouer()
         {
             Decision dec;
@@ -76,9 +81,9 @@ namespace Perudo.Backend
                         }
                         else if (choix == 3)
                         {
-                            ///encherir perudo
                             double res = olddec.nb / 2;
-                            int paco = Math.Ceiling(res);
+                            double rnd = Math.Round(res);
+                            int paco = Convert.ToInt32(rnd);
                             dec = new Decision(Backend.Action.encherir, 1, paco);
                         }
                         else if (choix == 4)
