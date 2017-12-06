@@ -6,19 +6,11 @@ using System.Text;
 namespace Perudo.Backend
 {
     public class Humain : Joueur
-    {
-        private string pseudo;
-
+    {        
         public Humain(string pseudo, int id, Randomizer randomizer)
-            : base(id, randomizer)
+            : base(id, pseudo, randomizer)
         {
             typeJ = TypeJoueur.humain;
-            this.pseudo = pseudo;
-        }
-                
-        public string Getpseudo()
-        {
-            return pseudo;
         }
         
         public override void Resultat(int idJoueur, bool perdu)

@@ -9,6 +9,7 @@ namespace Perudo
     {
         ///Propriétées
         protected TypeJoueur typeJ;
+        protected string pseudo;
         protected int nbDes = 5;
         protected List<Des> mesDes = new List<Des>(5);
         protected int id;
@@ -21,16 +22,22 @@ namespace Perudo
         /// </summary>
         /// <param name="id">L'index ou numéro du joueur</param>
         /// <param name="randomizer"></param>
-        public Joueur(int id, Randomizer randomizer)
+        public Joueur(int id, string pseudo, Randomizer randomizer)
         {
             this.id = id;
             this.randomizer = randomizer;
+            this.pseudo = pseudo;
             SetDes();
         }
                 
         public void Notify(Decision des)
         {
             decs.Add(des);
+        }
+
+        public string Getpseudo()
+        {
+            return pseudo;
         }
 
         /// <summary>
