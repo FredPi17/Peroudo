@@ -9,7 +9,10 @@
     <Import_RootNamespace>Perudo</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Backend\Decision.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Backend\Des.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Backend\EnumAction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Backend\EnumType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Backend\Humain.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Backend\IA.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Backend\Manche.cs" />
@@ -19,6 +22,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Backend\Statistiques.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Backend\Tour.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Backend\views.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Backend\Joueur.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>

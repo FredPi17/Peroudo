@@ -4,8 +4,9 @@ using System.Text;
 
 namespace Perudo.Backend
 {
-    class Partie
+    public enum TypeJoueur
     {
-
+        ordinateur = 0,
+        humain = 1
     }
 }

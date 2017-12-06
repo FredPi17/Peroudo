@@ -4,8 +4,10 @@ using System.Text;
 
 namespace Perudo.Backend
 {
-    class Partie
+    public enum Action
     {
-
+        encherir = 0,
+        bluff = 1,
+        calza = 2
     }
 }
