@@ -19,16 +19,32 @@ namespace Perudo.Views
         {
 			InitializeComponent ();
             JoueurEnCours.Text = Manche.JoueurEnCours.Getpseudo();
-
             Debug.WriteLine($"{Manche.JoueurEnCours.Getpseudo()}");
+
+            
+            
 		}
 
 	    void Clicked_validate(object sender, EventArgs e)
 	    {
-	        
-	    }
+	        int valeurDes = 0;
+	        int nbValeurDe = 0;
 
-	    void Click_Kelza(object sender, EventArgs e)
+            try
+	        {
+	            valeurDes = Int32.Parse(Dés.Text);
+	            nbValeurDe = Int32.Parse(ValeursDés.Text);
+            }
+	        catch (Exception exception)
+	        {
+	            Debug.WriteLine(exception);
+	            throw;
+	        }
+	        Decision decision = new Decision(Action.encherir, valeurDes, nbValeurDe);
+            Manche.MainManche.Traiter(decision);
+        }
+
+        void Click_Kelza(object sender, EventArgs e)
 	    {
             Decision decision = new Decision(Action.calza);
 	        Manche.MainManche.Traiter(decision);

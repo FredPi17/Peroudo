@@ -100,20 +100,21 @@ namespace ConsoleApp1
         {
             if (dec.actionEncours == Action.bluff)
             {
-                
+                Debug.WriteLine("ActionBluff");
+                verificationBluff();
             }
             else if(dec.actionEncours == Action.calza)
             {
-                
+                Debug.WriteLine("ActionCalza");
+
+                verificationCalza();
             }
-            else
+            else //Enchère
             {
+                Debug.WriteLine("ActionEnchere");
+
                 ChangerJoueurCourrant();
             }
-            //bluff verification()
-            //Calsa verification()
-
-            //Enchere
         }
 
         public void verificationBluff()
