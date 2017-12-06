@@ -4,6 +4,7 @@ using System.Text;
 
 namespace Perudo.Backend
 {
+    //TODO a supp
     public enum Action
     {
         encherir = 0,
@@ -28,16 +29,19 @@ namespace Perudo.Backend
             this.nb = nb;
         }
     }
+    //fin supp
 
     class IA : Joueur
     {
-        // a supp
+        //Todo a supp
         protected List<Decision> decs = new List<Decision>();
         // fin supp
-
-            
+                    
         ///Propriétés
         private Niveau myNiveau;
+        private int nbTotalDes;
+        private List<Tuple<int, int>> listJoueurDes;
+
        
         /// <summary>
         /// Constructeur d'IA
@@ -46,11 +50,16 @@ namespace Perudo.Backend
         /// <param name="id">l'index ou le numéro du joueur</param>
         /// <param name="pseudo">Le pseudo de l'IA</param>
         /// <param name="randomizer">pour les dés</param>
-        public IA(Niveau choix, int id, string pseudo, Randomizer randomizer)
+        public IA(Niveau choix, int id, string pseudo, Randomizer randomizer, int nbJoueur)
             : base (id, pseudo, randomizer)
         {
             myNiveau = choix;
             typeJ = TypeJoueur.ordinateur;
+            listJoueurDes = new List<Tuple<int, int>>();
+            for (int i = 0; i < nbJoueur; i++)
+            {
+                listJoueurDes.Add(new Tuple<int, int>(i, 5));
+            }
         }
                 
         /// <summary>
@@ -111,6 +120,81 @@ namespace Perudo.Backend
            
         }
 
+        int Calcul()
+        {
 
+        } 
+
+        public override void Resultat(int idJoueur, bool perdu)
+        {
+            if (id == idJoueur)
+            {
+                if (perdu == true)
+                {
+                    nbDes--;
+                    if (nbDes == 0)
+                    {
+                        alive = false;
+                    }
+                }
+                else if (nbDes < 5)
+                {
+                    nbDes++;
+                }
+            }
+            else
+            {
+                int i = 0;
+                bool foundJoueur = false;
+                while (i < listJoueurDes.Count - 1 || foundJoueur == false)
+                {
+                    if (listJoueurDes[i].Item1 == idJoueur)
+                    {
+                        foundJoueur = true;
+                    } else
+                    {
+                        i++;
+                    }                    
+                }
+                int nbDes = listJoueurDes[i].Item2;
+                if (perdu == true)
+                {
+                    nbDes--;
+                }
+                else if (nbDes < 5)
+                {
+                    nbDes++;
+                }
+                listJoueurDes[i] = Tuple.Create(i, nbDes);
+            }
+        }
+
+        private int NbTotalDes()
+        {
+            int tot = 0;
+            for (int j = 0; j < listJoueurDes.Count - 1; j++)
+            {
+                tot += listJoueurDes[j].Item2;
+            }
+            return tot;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="chiffre">le numéro du dé</param>
+        /// <returns>Combien on a de dé "chiffre" dans notre main</returns>
+        private int Combien(int chiffre)
+        {
+            int tot = 0;
+            for (int i = 0; i < mesDes.Count -1; i++)
+            {
+                if (mesDes[i] == chiffre)
+                {
+                    tot++;
+                }
+            }
+            return tot;
+        }
     }
 }
