@@ -30,19 +30,22 @@ namespace Perudo.Backend
         /// <param name="nbDeTable">le nombre de des encore en jeu</param>
         public Decision Jouer()
         {
+            Decision dec;
             switch (myNiveau)
             {
                 case Niveau.Facile:
                     { 
+
                         Random rng = new Random();
                         int choix = rng.Next(0, 6);
                         if (choix == 0)
                         {
-                            ///bluff
+                            dec = new Decision(Backend.Action.bluff);
                         }
                         else if (choix == 1)
                         {
                             ///encherir sur de
+                            dec = new Decision(Backend.Action.encherir, );
                         }
                         else if (choix == 2)
                         {
@@ -58,7 +61,7 @@ namespace Perudo.Backend
                         }
                         else if (choix == 5)
                         {
-                           ///calza
+                            dec = new Decision(Backend.Action.calza);
                         }
                     }
                     break;
