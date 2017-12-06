@@ -40,13 +40,10 @@ namespace Perudo.Views
             else
             {
                 Debug.WriteLine("La partie ne peux pas démarrer elle a trop de joueur");
-
+                Alert.IsVisible = true;
             }
-
            
             //TODO: ctr IA.
-
-            //créer une partie, avec une liste de human.text.toInt de joueur idem pour IA(+difficulté), une liste de une manche pour init
           
 	    }
 

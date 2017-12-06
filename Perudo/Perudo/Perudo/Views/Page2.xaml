@@ -18,11 +18,16 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Label Text="Nombre d'humains" Grid.Row="0" Grid.Column="0" HorizontalOptions="CenterAndExpand"/>
                 <Entry x:Name="Humans" Placeholder="Entrez un nombre" Grid.Row="1" Grid.Column="0"/>
+                
+                <Label x:Name="Alert" Text="Le nombre de joueurs ne doit pas dépasser 6"  Grid.Row="2" Grid.Column="0" IsVisible="False" TextColor="Red"></Label>
+                
                 <Label Text="Nombre de machines" Grid.Row="0" Grid.Column="1" HorizontalOptions="CenterAndExpand"/>
                 <Entry x:Name="Machine" Placeholder="Entrez un nombre" Grid.Row="1" Grid.Column="1"/>
+                
                 <Picker x:Name="picker" Title="Selectionnez la difficulté" Grid.Row="2" Grid.Column="1" >
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
