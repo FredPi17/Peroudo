@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Perudo;
 using Perudo.Backend;
+using System.Diagnostics;
 
 namespace ConsoleApp1
 {
@@ -12,14 +13,18 @@ namespace ConsoleApp1
     {
         public List<Joueur> JoueurList;
         public List<Manche> MancheList;
-        public Partie(Joueur joueur, int nbJoueurs)
+        public static Partie MainPartie { get; set; }
+
+        public Partie(int nbJoueurs, Randomizer randomizer)
         {
+            this.Randomizer = randomizer;
             JoueurList = new List<Joueur>(nbJoueurs);
             this.AddJoueur(nbJoueurs);
 
             Manche manche1 = new Manche(JoueurList);
             MancheList = new List<Manche>();
             this.AddManche(manche1);
+            Partie.MainPartie = this;
         }
 
         public void AddJoueur(int nbJoueurs)
@@ -77,7 +82,7 @@ namespace ConsoleApp1
                         {
                             Humain humain = joueur as Humain;
                             string pseudoGagnant = humain.Getpseudo();
-                            Console.WriteLine($"C'est la fin du jeu. C'est {pseudoGagnant} qui a gagné");
+                            Debug.WriteLine($"C'est la fin du jeu. C'est {pseudoGagnant} qui a gagné");
                             //Faire appel aux méthode de stockage
                         }
                         else
