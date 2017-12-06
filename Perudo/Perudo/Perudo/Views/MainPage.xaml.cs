@@ -18,6 +18,11 @@ namespace Perudo
             var np = new NavigationPage(new Page2());
 	        Application.Current.MainPage = np;
 	    }
+
+	    void ImporterSauvegarde(object sender, EventArgs e)
+	    {
+	        
+	    }
 	    
 	}
    }

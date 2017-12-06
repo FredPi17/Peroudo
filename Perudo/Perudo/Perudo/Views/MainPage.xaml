@@ -16,21 +16,10 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-            <Label Text="BIENVENUE AU PERUDO !"
-                   VerticalOptions="Center"
-                   HorizontalTextAlignment="Center"
-                   IsVisible="true"
-                   FontSize="Large"
-                   FontAttributes="Bold"
-                   TextColor="Blue"
-                   Grid.Row="1" Grid.Column="0"/>
-            
-            <Button x:Name="localModeBtn" 
-                    Text="COMMENCER" 
-                    Clicked="localModeBtn_Click"
-                    Grid.Row="3" Grid.Column="0"/>
-                
-            
+                <Label Text="BIENVENUE AU PERUDO !" VerticalOptions="Center" HorizontalTextAlignment="Center" IsVisible="true" FontSize="Large" FontAttributes="Bold" TextColor="Blue" Grid.Row="1" Grid.Column="0"/>
+                <Button x:Name="localModeBtn" Text="COMMENCER" Clicked="localModeBtn_Click" Grid.Row="3" Grid.Column="0"/>
+                <Button x:Name="Import" Text="Importer sauvegarde" Clicked="ImporterSauvegarde" Grid.Row="4" Grid.Column="0"/>
+
             </Grid>
                 
 
