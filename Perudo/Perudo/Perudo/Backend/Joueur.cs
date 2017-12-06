@@ -13,8 +13,8 @@ namespace Perudo
         protected List<Des> mesDes = new List<Des>(5);
         protected int id;
         protected bool alive = true;
-        protected Randomizer randomizer;
-        protected <Decision> decs = new List<Decision>();
+        private Randomizer randomizer;
+        protected List<Decision> decs = new List<Decision>();
                 
         /// <summary>
         /// 
