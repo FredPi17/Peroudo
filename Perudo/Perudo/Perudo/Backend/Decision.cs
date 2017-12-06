@@ -6,8 +6,20 @@ namespace Perudo.Backend
 {
     class Decision
     {
-        Action actionEncours;
-        int de;
-        int nb;
+        public Action actionEncours;
+        public int de;
+        public int nb;
+
+        public Decision(Action action)
+        {
+            actionEncours = action;
+        }
+
+        public Decision(Action action, int de, int nb)
+        {
+            actionEncours = action;
+            this.de = de;
+            this.nb = nb;
+        }
     }
 }
