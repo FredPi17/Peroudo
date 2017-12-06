@@ -4,30 +4,22 @@ using System.Text;
 
 namespace Perudo.Backend
 {
-    enum Niveau
-    {
-        Facile = 0,
-        Moyen = 1
-    }
     class IA : Jouer
     {
         ///Propriétés
         private Niveau myNiveau;
-
+       
         /// <summary>
-        /// 
+        /// Constructeur d'IA
         /// </summary>
-        public IA()
-        {
-            myNiveau = Niveau.Facile;
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="choix">La difficulté de l'IA</param>
-        public IA(Niveau choix)
+        /// <param name="choix">Le choix du niveau</param>
+        /// <param name="id">l'index ou le numéro du joueur</param>
+        /// <param name="randomizer">pour les dés</param>
+        public IA(Niveau choix, int id, Randomizer randomizer)
+            : base (id, randomizer)
         {
             myNiveau = choix;
+            typeJ = TypeJoueur.ordinateur;
         }
         
         /// <summary>
@@ -36,10 +28,8 @@ namespace Perudo.Backend
         /// <param name="de">le numéro du de</param>
         /// <param name="nb">le nombre de des</param>
         /// <param name="nbDeTable">le nombre de des encore en jeu</param>
-        /// <returns>le choix de l'IA</returns>
-        public string Jouer(int de, int nb, int nbDeTable)
+        public void Jouer(int de, int nb, int nbDeTable)
         {
-            string res;
             switch (myNiveau)
             {
                 case Niveau.Facile:
@@ -48,7 +38,7 @@ namespace Perudo.Backend
                         int choix = rng.Next(0, 6);
                         if (choix == 0)
                         {
-                            res = "bluff";
+                            ///bluff
                         }
                         else if (choix == 1)
                         {
@@ -68,7 +58,7 @@ namespace Perudo.Backend
                         }
                         else if (choix == 5)
                         {
-                            res = "calza";
+                           ///calza
                         }
                     }
                     break;
@@ -89,11 +79,11 @@ namespace Perudo.Backend
                                 int choix = rng.Next(0, 2);
                                 if (choix == 0)
                                 {
-                                    res = "bluff";
+                                    ///bluff
                                 }
                                 else if (choix == 1)
                                 {
-                                    res = "calza";
+                                    ///calza
                                 }
                             } 
                         }
