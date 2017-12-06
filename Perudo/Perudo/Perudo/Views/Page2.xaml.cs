@@ -20,7 +20,7 @@ namespace Perudo.Views
         { 
             var humains = Humans.Text;
 	        var machine = Machine.Text;
-            var np = new NavigationPage(new Page3());
+            var np = new NavigationPage(root: new Page3());
 	        Application.Current.MainPage = np;
 	    }
 
