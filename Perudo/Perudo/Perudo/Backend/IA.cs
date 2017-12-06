@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Perudo.Backend
 {
-    class IA : Jouer
+    class IA : Joueur
     {
         ///Propriétés
         private Niveau myNiveau;
@@ -28,7 +28,7 @@ namespace Perudo.Backend
         /// <param name="de">le numéro du de</param>
         /// <param name="nb">le nombre de des</param>
         /// <param name="nbDeTable">le nombre de des encore en jeu</param>
-        public void Jouer(int de, int nb, int nbDeTable)
+        public Decision Jouer()
         {
             switch (myNiveau)
             {
@@ -65,40 +65,12 @@ namespace Perudo.Backend
 
                 case Niveau.Moyen:
                     {
-                        if (nb > nbDeTable)
-                        {
-                            if (de != 0)///perudo
-                            {
-                                ///TODO
-                            } else if (de < 6)
-                            {
-                                ///encherir sur de
-                            } else
-                            {
-                                Random rng = new Random();
-                                int choix = rng.Next(0, 2);
-                                if (choix == 0)
-                                {
-                                    ///bluff
-                                }
-                                else if (choix == 1)
-                                {
-                                    ///calza
-                                }
-                            } 
-                        }
-                        else
-                        {
-                            Random rng = new Random();
-                            int choix = rng.Next(0, 2);
-                            if (choix == 0)
-                            {
-                                ///encherir sur de
-                            } else if (choix == 1)
-                            {
-                                ///enchrir sur nb
-                            } 
-                        }
+
+                    }
+                    break;
+
+                case Niveau.Difficile:
+                    {
                     }
                     break;
             }
