@@ -1,10 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
+using Perudo;
 
-namespace Perudo.Backend
+namespace ConsoleApp1
 {
-    class Manche
+    public class Manche
     {
+        public List<Joueur> JoueurListDansManche;
+        public Manche(List<Joueur> JoueurList)
+        {
+            JoueurListDansManche = JoueurList;
+        }
     }
 }
