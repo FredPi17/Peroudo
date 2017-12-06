@@ -31,24 +31,7 @@ namespace Perudo.Views
                 humains = Int32.Parse(Humans.Text);
                 machine = Int32.Parse(Machine.Text);
 
-	            Partie mainPartie = null;
-
-
-	            if (CheckMaxJoueurs(humains, machine))
-	            {
-	                Debug.WriteLine("La partie va commencer");
-	                new Partie(humains + machine, Randomizer);
-
-	                var np = new NavigationPage(new Page3());
-	                Application.Current.MainPage = np;
-	            }
-	            else
-	            {
-	                Debug.WriteLine("La partie ne peux pas démarrer elle a trop de joueur");
-	                Alert.Text = "Le nombre de joueurs ne doit pas dépasser 6";
-
-                    Alert.IsVisible = true;
-	            }
+	           
             }
 	        catch (Exception exception)
 	        {
@@ -56,9 +39,27 @@ namespace Perudo.Views
 	            Alert.Text = "Doit contenir des chiffres";
 	            Alert.IsVisible = true;
 	        }
+	        Partie mainPartie = null;
+
+
+	        if (CheckMaxJoueurs(humains, machine))
+	        {
+	            Debug.WriteLine("La partie va commencer");
+	            new Partie(humains + machine, Randomizer);
+
+	            var np = new NavigationPage(new Page3());
+	            Application.Current.MainPage = np;
+	        }
+	        else
+	        {
+	            Debug.WriteLine("La partie ne peux pas démarrer elle a trop de joueur");
+	            Alert.Text = "Le nombre de joueurs ne doit pas dépasser 6";
+
+	            Alert.IsVisible = true;
+	        }
             //TODO: ctr IA.
-          
-	    }
+
+        }
 	    public static bool CheckMaxJoueurs(int nbHumains, int nbIA)
 	    {
 	        return nbHumains + nbIA <= 6 && nbHumains + nbIA > 0;

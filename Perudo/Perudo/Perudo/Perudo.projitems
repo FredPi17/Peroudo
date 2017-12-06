@@ -9,6 +9,7 @@
     <Import_RootNamespace>Perudo</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Backend\Decision.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Backend\Des.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Backend\EnumAction.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Backend\EnumNiveau.cs" />

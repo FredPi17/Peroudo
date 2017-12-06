@@ -12,18 +12,18 @@ namespace ConsoleApp1
     public class Partie
     {
         public List<Joueur> JoueurList;
-        public List<Manche> MancheList;
         public static Partie MainPartie { get; set; }
 
         public Partie(int nbJoueurs, Randomizer randomizer)
         {
             this.Randomizer = randomizer;
+
             JoueurList = new List<Joueur>(nbJoueurs);
             this.AddJoueur(nbJoueurs);
 
-            Manche manche1 = new Manche(JoueurList);
-            MancheList = new List<Manche>();
-            this.AddManche(manche1);
+            Manche.MainManche = new Manche(JoueurList);
+
+        
             Partie.MainPartie = this;
         }
 
@@ -42,11 +42,7 @@ namespace ConsoleApp1
         }
 
         public Randomizer Randomizer { get; set; }
-
-        public void AddManche(Manche manche)
-        {
-            MancheList.Add(manche);
-        }
+        
 
 
         /// <summary>

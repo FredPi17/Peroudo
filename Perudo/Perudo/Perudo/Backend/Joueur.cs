@@ -14,6 +14,8 @@ namespace Perudo
         protected List<Des> mesDes = new List<Des>(5);
         protected int id;
         protected bool alive = true;
+        protected string pseudo;
+
 
         private Randomizer randomizer;
 
@@ -23,7 +25,10 @@ namespace Perudo
             this.randomizer = randomizer;
             SetDes();
         }
-
+        public string Getpseudo()
+        {
+            return pseudo;
+        }
 
 
         /// <summary>
