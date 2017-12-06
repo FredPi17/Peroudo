@@ -16,6 +16,11 @@ namespace Perudo
 
         private Randomizer randomizer;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id">L'index ou numéro du joueur</param>
+        /// <param name="randomizer"></param>
         public Joueur(int id, Randomizer randomizer)
         {
             this.id = id;
@@ -39,7 +44,6 @@ namespace Perudo
         {
             return alive;
         }
-
         /// <summary>
         /// 
         /// </summary>
@@ -90,8 +94,6 @@ namespace Perudo
         {
             return typeJ;
         }
-
-        public abstract Backend.Action Jouer();
         /// <summary>
         /// 
         /// </summary>
