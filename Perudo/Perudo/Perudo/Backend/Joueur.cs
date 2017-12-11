@@ -78,7 +78,10 @@ namespace Perudo
         /// <param name="nombre">Modifie le nombre de des du joueur</param>
         public void SetNbDes(int nombre)
         {
-            nbDes = nombre;
+            if (nombre <= 5)
+            {
+                nbDes = nombre;
+            }
         }
         /// <summary>
         /// 
@@ -86,11 +89,8 @@ namespace Perudo
         /// <param name="nbDes">Lance tous les dés du joueur</param>
         public void SetDes()
         {
-            if (mesDes.Count != 0)
-            {
-                mesDes.RemoveRange(0, 4);
-            }
-           
+            mesDes.Clear();
+
             for (int i = 0; i < nbDes; i++)
             {
                 Des d = new Des(randomizer);
