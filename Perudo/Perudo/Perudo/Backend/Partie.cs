@@ -42,8 +42,22 @@ namespace ConsoleApp1
         }
 
         public Randomizer Randomizer { get; set; }
-        
 
+        public int GetNbDes(string valeur)
+        {
+            int compteurDes = 0;
+            foreach (var joueur in JoueurList)
+            {
+                foreach (var de in joueur.GetDes())
+                {
+                    if (de.valeur == valeur)
+                    {
+                        compteurDes++;
+                    }
+                }
+            }
+            return compteurDes;
+        }
 
         /// <summary>
         /// Fonction qui permet de calculer combien il reste de survivant dans ma liste de joueur

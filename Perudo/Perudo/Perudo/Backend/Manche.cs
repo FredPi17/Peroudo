@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Perudo;
 using Perudo.Backend;
+using Perudo.Views;
+using Xamarin.Forms;
 using Action = Perudo.Backend.Action;
 
 namespace ConsoleApp1
@@ -17,29 +19,38 @@ namespace ConsoleApp1
         public int numTour = 0;
         public static Manche MainManche { get; set; }
         public static Joueur JoueurEnCours { get; set; }
+        public static Joueur JoueurPasse { get; set; }
+        public static Decision AncienneEnchere { get; set; }
+        public static Partie MainPartie { get; set; }
+
 
         /// <summary>
         /// Permet de retourner l'ID du joueur en train de jouer
         /// </summary>
         /// <param name="joueurlist"></param>
         /// <returns></returns>
-        public void SetJoueurEnCours(List<Joueur> joueurlist)
+        public void SetJoueurEnCours(List<Joueur> joueurlist, int Index)
         {
-            JoueurEnCours = JoueurListDansManche[IndexJoueurEnCours];
+            JoueurEnCours = joueurlist[Index];
         }
+        
 
         /// <summary>
         /// Permet de retourner l'ID du dernier joueur ayant joué
         /// </summary>
         /// <param name="joueurlist"></param>
         /// <returns></returns>
-        public Joueur JoueurPasse(List<Joueur> joueurlist)
+        public void SetJoueurPasse(List<Joueur> joueurlist)
         {
             int indexPrecedent = GetIndexJoueurPrecedent();
             if (numTour != 0)
-                return JoueurListDansManche[indexPrecedent]; //le Joueur précédent
+            {
+                JoueurPasse = JoueurListDansManche[indexPrecedent]; //le Joueur précédent
+            }
             else
-                return JoueurListDansManche[IndexJoueurEnCours]; //Le Joueur qui est en train de joueur
+            {
+                JoueurPasse = JoueurListDansManche[IndexJoueurEnCours]; //Le Joueur qui est en train de joueur
+            }
         }
 
         /// <summary>
@@ -83,12 +94,13 @@ namespace ConsoleApp1
 
             string proposition = "0";
 
-            SetJoueurEnCours(JoueurListDansManche);
+            SetJoueurEnCours(JoueurListDansManche, IndexJoueurEnCours);
             MainManche = this;
         }
 
         /// <summary>
         /// Se termine quand quelqu'un perd/gagne un dé
+        /// Je ne sais pas si elle est utile celle là
         /// </summary>
         public void FinManche()
         {
@@ -112,25 +124,107 @@ namespace ConsoleApp1
             else //Enchère
             {
                 Debug.WriteLine("ActionEnchere");
-
+                AncienneEnchere = dec;
+                Debug.WriteLine($"dec : {dec.nb} dés de {dec.de}");
+                Debug.WriteLine($"AncienneEnchère: {AncienneEnchere.nb} dés de {AncienneEnchere.de}");
                 ChangerJoueurCourrant();
             }
         }
 
         public void verificationBluff()
         {
-            
+            //Renvois vrai si l'enchère précedente est vrai, on vérifis donc le nombre total de valeur dé.
+            //On comparer alors DésEnCours et NbEnCours dans l'objet Decision par le nombre total de la valeur de tous les dés
+            var valeur = AncienneEnchere.de.ToString();
+            int NbDes = Partie.MainPartie.GetNbDes(valeur);
+            //Si c'est vrai le bluff fonctionne alors le joueur précédent perd un dé
+            if (NbDes > AncienneEnchere.nb)
+            {
+               JoueurPasse.SetNbDes(JoueurPasse.GetNbDes() - 1);
+               Debug.WriteLine("Le joueur précédent perd un dés");
+               foreach (var joueur in JoueurListDansManche)
+               {
+                   joueur.SetDes();
+               }
+            }
+            //Sinon c'est que le bluff n'a pas fonctionné et c'est le joueur actuel qui perd un dé.
+            else
+            {
+               JoueurEnCours.SetNbDes(JoueurEnCours.GetNbDes() - 1);
+               Debug.WriteLine("Le joueur actuel perd un dés");
+
+               foreach (var joueur in Partie.MainPartie.JoueurList)
+               {
+                   joueur.SetDes();
+               }
+            }
+            ChangerJoueurCourrant();
         }
 
         public void verificationCalza()
         {
-            
+            var valeur = AncienneEnchere.de.ToString();
+            int NbDes = Partie.MainPartie.GetNbDes(valeur);
+            //Si c'est vrai le bluff fonctionne alors le joueur précédent perd un dé
+            if (NbDes == AncienneEnchere.nb)
+            {
+                if (JoueurEnCours.GetNbDes() >= 5)
+                {
+                    Debug.WriteLine("Le joueur a assez de dé pour en gagner un de plus");
+                    foreach (var joueur in JoueurListDansManche)
+                    {
+                        joueur.SetDes();
+                    }
+                }
+                else
+                {
+                    JoueurEnCours.SetNbDes(JoueurEnCours.GetNbDes() + 1);
+                    Debug.WriteLine("Le joueur actuel gagne un dés");
+
+                    foreach (var joueur in JoueurListDansManche)
+                    {
+                        joueur.SetDes();
+                    }
+                }
+                ChangerJoueurCourrant();
+            }
+            //Sinon c'est que le bluff n'a pas fonctionné et c'est le joueur actuel qui perd un dé.
+            else
+            {
+                JoueurEnCours.SetNbDes(JoueurEnCours.GetNbDes() - 1);
+                Debug.WriteLine("Le joueur actuel perd un dés");
+
+                foreach (var joueur in JoueurListDansManche)
+                {
+                    joueur.SetDes();
+                }
+                ChangerJoueurCourrant();
+            }
         }
 
         void ChangerJoueurCourrant()
         {
             Debug.WriteLine("Changer le joueur courrant");
-            SetJoueurEnCours(JoueurListDansManche);
+            //On dice roll les dés de tous les joueurs.
+            JoueurPasse = JoueurEnCours;
+
+            do
+            {   
+                if (IndexJoueurEnCours == JoueurListDansManche.Count - 1)
+                {
+                    SetJoueurEnCours(JoueurListDansManche, 0);   
+                }
+                else
+                {
+                    IndexJoueurEnCours++;
+                    SetJoueurEnCours(JoueurListDansManche, IndexJoueurEnCours);
+                }
+            } while (!JoueurEnCours.IsAlive());
+            Debug.WriteLine($"Joueur En Cours après: {JoueurEnCours.Getpseudo()}");
+
+            var np = new NavigationPage(new Page3());
+            Application.Current.MainPage = np;
+
             if (JoueurEnCours.GetTypeJoueur() == TypeJoueur.ordinateur)
             {
                 Debug.WriteLine("IA");

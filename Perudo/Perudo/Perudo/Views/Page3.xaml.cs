@@ -21,19 +21,43 @@ namespace Perudo.Views
             JoueurEnCours.Text = Manche.JoueurEnCours.Getpseudo();
             Debug.WriteLine($"{Manche.JoueurEnCours.Getpseudo()}");
 
-            
-            
-		}
+            //Debug provisoire
+            string ValeurDes = "";
+            foreach (var Des in Manche.JoueurEnCours.GetDes())
+            {
+                ValeurDes += Des.valeur + " ";
+            }
+            DesJoueur.Text = ValeurDes;
+            string ValeurJoueur0Des = "";
+            foreach (var Des in Partie.MainPartie.JoueurList[0].GetDes())
+            {
+                
+                ValeurJoueur0Des += Des.valeur + " ";
+            }
+            Debug.WriteLine($"{Partie.MainPartie.JoueurList[0].Getpseudo()}: {ValeurJoueur0Des}");
+            string ValeurJoueur1Des = "";
+            foreach (var Des in Partie.MainPartie.JoueurList[1].GetDes())
+            {
+                
+                ValeurJoueur1Des += Des.valeur + " ";
+            }
+            Debug.WriteLine($"{Partie.MainPartie.JoueurList[1].Getpseudo()}: {ValeurJoueur1Des}");
+            //Fin du débug provisoire
+            if (Manche.AncienneEnchere != null)
+            {
+                Enchere.Text = $"{Manche.AncienneEnchere.nb} dés de {Manche.AncienneEnchere.de}";
+            }
+        }
 
-	    void Clicked_validate(object sender, EventArgs e)
+        void Clicked_validate(object sender, EventArgs e)
 	    {
 	        int valeurDes = 0;
 	        int nbValeurDe = 0;
 
             try
 	        {
-	            valeurDes = Int32.Parse(Dés.Text);
-	            nbValeurDe = Int32.Parse(ValeursDés.Text);
+	            nbValeurDe = Int32.Parse(Dés.Text);
+	            valeurDes = Int32.Parse(ValeursDés.Text);
             }
 	        catch (Exception exception)
 	        {
