@@ -22,6 +22,10 @@ namespace ConsoleApp1
         public static Joueur JoueurPasse { get; set; }
         public static Decision AncienneEnchere { get; set; }
         public static Partie MainPartie { get; set; }
+        public static int nbManche { get; set; }
+        public static int nbRound { get; set; }
+        public static string actionJoueur { get; set; }
+
 
 
         /// <summary>
@@ -91,7 +95,9 @@ namespace ConsoleApp1
         {
             JoueurListDansManche = Joueurlist;
             IndexJoueurEnCours = 0;
-
+            nbManche = 1;
+            nbRound = 1;
+            actionJoueur = "";
             string proposition = "0";
 
             SetJoueurEnCours(JoueurListDansManche, IndexJoueurEnCours);
@@ -113,18 +119,20 @@ namespace ConsoleApp1
             if (dec.actionEncours == Action.bluff)
             {
                 Debug.WriteLine("ActionBluff");
+                nbManche += 1;
                 verificationBluff();
             }
             else if(dec.actionEncours == Action.calza)
             {
                 Debug.WriteLine("ActionCalza");
-
+                nbManche += 1;
                 verificationCalza();
             }
             else //Enchère
             {
                 Debug.WriteLine("ActionEnchere");
                 AncienneEnchere = dec;
+                nbRound += 1;
                 Debug.WriteLine($"dec : {dec.nb} dés de {dec.de}");
                 Debug.WriteLine($"AncienneEnchère: {AncienneEnchere.nb} dés de {AncienneEnchere.de}");
                 ChangerJoueurCourrant();
@@ -180,6 +188,7 @@ namespace ConsoleApp1
                 {
                     JoueurEnCours.SetNbDes(JoueurEnCours.GetNbDes() + 1);
                     Debug.WriteLine("Le joueur actuel gagne un dés");
+                    actionJoueur = JoueurEnCours.Getpseudo() + " gagne un dé";
 
                     foreach (var joueur in JoueurListDansManche)
                     {
@@ -193,6 +202,7 @@ namespace ConsoleApp1
             {
                 JoueurEnCours.SetNbDes(JoueurEnCours.GetNbDes() - 1);
                 Debug.WriteLine("Le joueur actuel perd un dés");
+                actionJoueur = JoueurEnCours.Getpseudo() + " perd un dé";
 
                 foreach (var joueur in JoueurListDansManche)
                 {

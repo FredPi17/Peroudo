@@ -19,7 +19,11 @@ namespace Perudo.Views
         public Page3 ()
         {
 			InitializeComponent ();
-            JoueurEnCours.Text = Manche.JoueurEnCours.Getpseudo();
+            Round.Text = "Round n° " + Manche.nbRound.ToString();
+            numManche.Text = "Manche n° " + Manche.nbManche.ToString();
+            JoueurEnCours.Text = "Joueur en cours: " + Manche.JoueurEnCours.Getpseudo();
+            joueurSituation.Text = Manche.actionJoueur.ToString();
+
             Debug.WriteLine($"{Manche.JoueurEnCours.Getpseudo()}");
 
             //Debug provisoire
@@ -28,7 +32,6 @@ namespace Perudo.Views
             {
                 ValeurDes += Des.valeur + " ";
             }
-            DesJoueur.Text = ValeurDes;
             string ValeurJoueur0Des = "";
             foreach (var Des in Partie.MainPartie.JoueurList[0].GetDes())
             {
@@ -36,10 +39,9 @@ namespace Perudo.Views
                 ValeurJoueur0Des += Des.valeur + " ";
             }
             Debug.WriteLine($"{Partie.MainPartie.JoueurList[0].Getpseudo()}: {ValeurJoueur0Des}");
-            string ValeurJoueur1Des = "";
+            string ValeurJoueur1Des = "Mes dés : ";
             foreach (var Des in Partie.MainPartie.JoueurList[1].GetDes())
             {
-                
                 ValeurJoueur1Des += Des.valeur + " ";
             }
             Debug.WriteLine($"{Partie.MainPartie.JoueurList[1].Getpseudo()}: {ValeurJoueur1Des}");
