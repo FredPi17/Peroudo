@@ -24,7 +24,7 @@
                 <Button x:Name="Kelza" Text="Kelza" Clicked="Click_Kelza" Grid.Row="4" Grid.Column="3"/>
                 <Button x:Name="Bluff" Text="Bluff" Clicked="Click_Bluff" Grid.Row="4" Grid.Column="2"/>
                 <Label x:Name="Round" Text="" Grid.Row="1" Grid.Column="3" FontSize="25"/>
-                <Label x:Name="JoueurEnCours" Text="" Grid.Row="0" Grid.Column="0" FontSize="25"/>
+                <Label x:Name="JoueurEnCours" Text="" Grid.Row="0" Grid.Column="0"/>
                 <Entry x:Name="Dés" Placeholder="Nombre de dés" Grid.Row="3" Grid.Column="2"/>
                 <Entry x:Name="ValeursDés" Placeholder="Valeurs des dés" Grid.Row="3" Grid.Column="3"/>
                 <Label x:Name="numManche" Text="" Grid.Row="0" Grid.Column="3" FontSize="25"/>

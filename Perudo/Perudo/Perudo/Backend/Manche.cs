@@ -119,20 +119,18 @@ namespace ConsoleApp1
             if (dec.actionEncours == Action.bluff)
             {
                 Debug.WriteLine("ActionBluff");
-                nbManche += 1;
                 verificationBluff();
             }
             else if(dec.actionEncours == Action.calza)
             {
                 Debug.WriteLine("ActionCalza");
-                nbManche += 1;
                 verificationCalza();
             }
             else //Enchère
             {
+                nbRound += 1;
                 Debug.WriteLine("ActionEnchere");
                 AncienneEnchere = dec;
-                nbRound += 1;
                 Debug.WriteLine($"dec : {dec.nb} dés de {dec.de}");
                 Debug.WriteLine($"AncienneEnchère: {AncienneEnchere.nb} dés de {AncienneEnchere.de}");
                 ChangerJoueurCourrant();
@@ -145,11 +143,15 @@ namespace ConsoleApp1
             //On comparer alors DésEnCours et NbEnCours dans l'objet Decision par le nombre total de la valeur de tous les dés
             var valeur = AncienneEnchere.de.ToString();
             int NbDes = Partie.MainPartie.GetNbDes(valeur);
+            nbRound = 1;
+            nbManche += 1;
+
             //Si c'est vrai le bluff fonctionne alors le joueur précédent perd un dé
             if (NbDes > AncienneEnchere.nb)
             {
                JoueurPasse.SetNbDes(JoueurPasse.GetNbDes() - 1);
                Debug.WriteLine("Le joueur précédent perd un dés");
+                actionJoueur = JoueurPasse.Getpseudo() + " perd un dé";
                foreach (var joueur in JoueurListDansManche)
                {
                    joueur.SetDes();
@@ -160,8 +162,8 @@ namespace ConsoleApp1
             {
                JoueurEnCours.SetNbDes(JoueurEnCours.GetNbDes() - 1);
                Debug.WriteLine("Le joueur actuel perd un dés");
-
-               foreach (var joueur in Partie.MainPartie.JoueurList)
+                actionJoueur = JoueurEnCours.Getpseudo() + " perd un dé";
+                foreach (var joueur in Partie.MainPartie.JoueurList)
                {
                    joueur.SetDes();
                }
@@ -173,6 +175,8 @@ namespace ConsoleApp1
         {
             var valeur = AncienneEnchere.de.ToString();
             int NbDes = Partie.MainPartie.GetNbDes(valeur);
+            nbManche += 1;
+            nbRound = 1;
             //Si c'est vrai le bluff fonctionne alors le joueur précédent perd un dé
             if (NbDes == AncienneEnchere.nb)
             {
@@ -189,7 +193,8 @@ namespace ConsoleApp1
                     JoueurEnCours.SetNbDes(JoueurEnCours.GetNbDes() + 1);
                     Debug.WriteLine("Le joueur actuel gagne un dé");
                     actionJoueur = JoueurEnCours.Getpseudo() + " gagne un dé";
-
+                    nbManche = 1;
+                    nbRound = 1;
                     foreach (var joueur in JoueurListDansManche)
                     {
                         joueur.SetDes();
@@ -203,7 +208,8 @@ namespace ConsoleApp1
                 JoueurEnCours.SetNbDes(JoueurEnCours.GetNbDes() - 1);
                 Debug.WriteLine("Le joueur actuel perd un dé");
                 actionJoueur = JoueurEnCours.Getpseudo() + " perd un dé";
-
+                nbManche = 1;
+                nbRound = 1;
                 foreach (var joueur in JoueurListDansManche)
                 {
                     joueur.SetDes();
