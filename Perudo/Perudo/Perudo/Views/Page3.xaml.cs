@@ -23,7 +23,6 @@ namespace Perudo.Views
             numManche.Text = "Manche n° " + Manche.nbManche.ToString();
             JoueurEnCours.Text = "Joueur en cours: " + Manche.JoueurEnCours.Getpseudo();
             joueurSituation.Text = Manche.actionJoueur.ToString();
-
             Debug.WriteLine($"{Manche.JoueurEnCours.Getpseudo()}");
 
             //Debug provisoire
@@ -44,11 +43,12 @@ namespace Perudo.Views
             {
                 ValeurJoueur1Des += Des.valeur + " ";
             }
+            DesJoueur.Text = ValeurJoueur1Des;
             Debug.WriteLine($"{Partie.MainPartie.JoueurList[1].Getpseudo()}: {ValeurJoueur1Des}");
             //Fin du débug provisoire
             if (Manche.AncienneEnchere != null)
             {
-                Enchere.Text = $"{Manche.AncienneEnchere.nb} dés de {Manche.AncienneEnchere.de}";
+                Enchere.Text = $"Dernière enchère : {Manche.AncienneEnchere.nb} dés de {Manche.AncienneEnchere.de}";
             }
         }
 
@@ -66,8 +66,25 @@ namespace Perudo.Views
 	        {
 	            Debug.WriteLine(exception);
 	        }
-	        Decision decision = new Decision(Action.encherir, valeurDes, nbValeurDe);
-            Manche.MainManche.Traiter(decision);
+	        if (Manche.AncienneEnchere != null)
+	        {
+	            if (nbValeurDe >= Manche.AncienneEnchere.nb)
+	            {
+	                if (valeurDes >= Manche.AncienneEnchere.de)
+	                {
+	                    Kelza.IsEnabled = true;
+	                    Bluff.IsEnabled = true;
+                        Decision decision = new Decision(Action.encherir, valeurDes, nbValeurDe);
+	                    Manche.MainManche.Traiter(decision);
+	                }
+	            }
+	            joueurSituation.Text = "Votre enchère doit etre supérieure à la précédente";
+            }
+	        else
+	        {
+	            Decision decision = new Decision(Action.encherir, valeurDes, nbValeurDe);
+	            Manche.MainManche.Traiter(decision);
+	        }
         }
 
         void Click_Kelza(object sender, EventArgs e)

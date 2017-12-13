@@ -178,7 +178,7 @@ namespace ConsoleApp1
             {
                 if (JoueurEnCours.GetNbDes() >= 5)
                 {
-                    Debug.WriteLine("Le joueur a assez de dé pour en gagner un de plus");
+                    Debug.WriteLine("Le joueur a assez de dés pour en gagner un de plus");
                     foreach (var joueur in JoueurListDansManche)
                     {
                         joueur.SetDes();
@@ -187,7 +187,7 @@ namespace ConsoleApp1
                 else
                 {
                     JoueurEnCours.SetNbDes(JoueurEnCours.GetNbDes() + 1);
-                    Debug.WriteLine("Le joueur actuel gagne un dés");
+                    Debug.WriteLine("Le joueur actuel gagne un dé");
                     actionJoueur = JoueurEnCours.Getpseudo() + " gagne un dé";
 
                     foreach (var joueur in JoueurListDansManche)
@@ -201,7 +201,7 @@ namespace ConsoleApp1
             else
             {
                 JoueurEnCours.SetNbDes(JoueurEnCours.GetNbDes() - 1);
-                Debug.WriteLine("Le joueur actuel perd un dés");
+                Debug.WriteLine("Le joueur actuel perd un dé");
                 actionJoueur = JoueurEnCours.Getpseudo() + " perd un dé";
 
                 foreach (var joueur in JoueurListDansManche)
@@ -214,7 +214,7 @@ namespace ConsoleApp1
 
         void ChangerJoueurCourrant()
         {
-            Debug.WriteLine("Changer le joueur courrant");
+            Debug.WriteLine("Changer le joueur courant");
             //On dice roll les dés de tous les joueurs.
             JoueurPasse = JoueurEnCours;
             if (JoueurEnCours.GetNbDes() == 0)
