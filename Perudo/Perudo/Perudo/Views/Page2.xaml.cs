@@ -30,7 +30,8 @@ namespace Perudo.Views
 	        {
                 humains = Int32.Parse(Humans.Text);
                 machine = Int32.Parse(Machine.Text);
-                
+
+	           
             }
 	        catch (Exception exception)
 	        {
@@ -43,7 +44,7 @@ namespace Perudo.Views
             if (CheckMaxJoueurs(humains, machine))
 	        {
 	            Debug.WriteLine("La partie va commencer");
-	            new Partie(humains, machine, Randomizer);
+	            new Partie(humains + machine, Randomizer);
 
 	            var np = new NavigationPage(new Page3());
 	            Application.Current.MainPage = np;
