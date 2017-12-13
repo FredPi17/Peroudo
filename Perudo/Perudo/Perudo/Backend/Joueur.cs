@@ -9,13 +9,12 @@ namespace Perudo
     public abstract class Joueur
     {
         ///Propriétées
-        protected TypeJoueur typeJ;
-        protected int nbDes = 5;
-        protected List<Des> mesDes = new List<Des>(5);
-        protected int id;
-        protected bool alive = true;
-        protected string pseudo;
-
+        public TypeJoueur typeJ { get; set; }
+        public int nbDes { get; set; }
+        public List<Des> mesDes { get; set; }
+        public int id { get; set; }
+        public bool alive { get; set; }
+        public string pseudo { get; set; }
 
         private Randomizer randomizer;
 
@@ -23,6 +22,9 @@ namespace Perudo
         {
             this.id = id;
             this.randomizer = randomizer;
+            this.nbDes = 5;
+            this.mesDes = new List<Des>(5);
+            alive = true;
             SetDes();
         }
         public string Getpseudo()

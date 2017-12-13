@@ -39,10 +39,9 @@ namespace Perudo.Views
 	            Alert.Text = "Doit contenir des chiffres";
 	            Alert.IsVisible = true;
 	        }
-	        Partie mainPartie = null;
 
 
-	        if (CheckMaxJoueurs(humains, machine))
+            if (CheckMaxJoueurs(humains, machine))
 	        {
 	            Debug.WriteLine("La partie va commencer");
 	            new Partie(humains + machine, Randomizer);

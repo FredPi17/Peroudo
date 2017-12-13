@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Perudo.Views.Page4">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text=""
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <Entry x:Name="Chemin" Placeholder="Chemin du fichier"/>
+            <Button x:Name="submit3" Text="Générer" Clicked="Validate" />
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

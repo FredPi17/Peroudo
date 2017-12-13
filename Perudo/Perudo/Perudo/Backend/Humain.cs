@@ -22,20 +22,18 @@ namespace Perudo.Backend
 
         public override void Resultat(int idJoueur, bool perdu)
         {
-            if (id == idJoueur)
-            {
-                if (perdu == true)
+           if (perdu)
+           {
+                if (nbDes <= 0)
                 {
-                    nbDes--;
-                    if (nbDes == 0)
-                    {
-                        alive = false;
-                    }
-                } else if (nbDes < 5)
-                {
-                    nbDes++;
+                    alive = false;
                 }
-            }
+           }
+           else if (nbDes < 5)
+           {
+                nbDes++;
+           }
+            
         }
     }
 }

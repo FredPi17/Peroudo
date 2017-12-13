@@ -29,6 +29,11 @@
                     Text="COMMENCER" 
                     Clicked="localModeBtn_Click"
                     Grid.Row="3" Grid.Column="0"/>
+                <Entry x:Name="json" Placeholder="Json"/>
+                <Button x:Name="importSave" 
+                    Text="Importer une sauvegarde" 
+                    Clicked="ImportSave_OnClicked"
+                    Grid.Row="3" Grid.Column="1"/>
                 
             
             </Grid>

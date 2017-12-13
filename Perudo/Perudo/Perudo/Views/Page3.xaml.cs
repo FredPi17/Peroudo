@@ -62,7 +62,6 @@ namespace Perudo.Views
 	        catch (Exception exception)
 	        {
 	            Debug.WriteLine(exception);
-	            throw;
 	        }
 	        Decision decision = new Decision(Action.encherir, valeurDes, nbValeurDe);
             Manche.MainManche.Traiter(decision);

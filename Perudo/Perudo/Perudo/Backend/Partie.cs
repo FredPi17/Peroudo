@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 using Perudo;
 using Perudo.Backend;
 using System.Diagnostics;
+using Perudo.Views;
+using Xamarin.Forms;
 
 namespace ConsoleApp1
 {
     public class Partie
     {
-        public List<Joueur> JoueurList;
+        public List<Joueur> JoueurList { get; set; }
         public static Partie MainPartie { get; set; }
 
         public Partie(int nbJoueurs, Randomizer randomizer)
@@ -77,34 +79,21 @@ namespace ConsoleApp1
             }
             return compteur;
         }
+
         /// <summary>
         /// Fonction qui affiche le joueur ou IA gagnant. Elle renvois rien car elle fait appel à d'autre fonctions comme Sauvegarde etc...
         /// </summary>
-        public void FinJeu()
+        public bool FinJeu()
         {
-            if (CountAlive() == 1)
+            bool end = false;
+            if (JoueurList.Count(e => e.IsAlive() && e.GetTypeJoueur() == TypeJoueur.humain) == 1)
             {
-                foreach (var joueur in JoueurList)
-                {
-                    if (joueur.IsAlive())
-                    {
-                        if (joueur.GetTypeJoueur() == TypeJoueur.humain)
-                        {
-                            Humain humain = joueur as Humain;
-                            string pseudoGagnant = humain.Getpseudo();
-                            Debug.WriteLine($"C'est la fin du jeu. C'est {pseudoGagnant} qui a gagné");
-                            //Faire appel aux méthode de stockage
-                        }
-                        else
-                        {
-                            //TODO pour IA
-                            /*  Humain humain = joueur as Humain;
-                              string pseudoGagnant = humain.Getpseudo();
-                              Console.WriteLine($"C'est la fin du jeu. C'est {pseudoGagnant} qui a gagné");*/
-                        }
-                    }
-                }
+                Humain humain = (Humain)JoueurList.First(e => e.IsAlive() && e.GetTypeJoueur() == TypeJoueur.humain);
+                string pseudoGagnant = humain.Getpseudo();
+                Debug.WriteLine($"C'est la fin du jeu. C'est {pseudoGagnant} qui a gagné");
+                return true;
             }
+            return end;
         }
     }
 }

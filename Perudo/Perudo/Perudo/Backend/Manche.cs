@@ -207,23 +207,35 @@ namespace ConsoleApp1
             Debug.WriteLine("Changer le joueur courrant");
             //On dice roll les dés de tous les joueurs.
             JoueurPasse = JoueurEnCours;
-
-            do
-            {   
-                if (IndexJoueurEnCours == JoueurListDansManche.Count - 1)
+            if (JoueurEnCours.GetNbDes() == 0)
+            {
+                JoueurEnCours.Resultat(IndexJoueurEnCours, true);
+            }
+                if (Partie.MainPartie.FinJeu())
                 {
-                    SetJoueurEnCours(JoueurListDansManche, 0);   
+                    //Faire appel à la page de fin.
+                    Application.Current.MainPage = new NavigationPage(new Page4());
                 }
                 else
                 {
-                    IndexJoueurEnCours++;
-                    SetJoueurEnCours(JoueurListDansManche, IndexJoueurEnCours);
-                }
-            } while (!JoueurEnCours.IsAlive());
-            Debug.WriteLine($"Joueur En Cours après: {JoueurEnCours.Getpseudo()}");
+                    do
+                    {
+                        if (IndexJoueurEnCours == JoueurListDansManche.Count - 1)
+                        {
+                            IndexJoueurEnCours = 0;
+                        }
+                        else
+                        {
+                            IndexJoueurEnCours++;
+                        }
+                        SetJoueurEnCours(JoueurListDansManche, IndexJoueurEnCours);
 
-            var np = new NavigationPage(new Page3());
-            Application.Current.MainPage = np;
+                    } while (!JoueurEnCours.IsAlive());
+                    Debug.WriteLine($"Joueur En Cours après: {JoueurEnCours.Getpseudo()}");
+
+                    var np = new NavigationPage(new Page3());
+                    Application.Current.MainPage = np;
+                }
 
             if (JoueurEnCours.GetTypeJoueur() == TypeJoueur.ordinateur)
             {
