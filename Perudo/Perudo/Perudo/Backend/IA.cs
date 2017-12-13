@@ -40,8 +40,8 @@ namespace Perudo.Backend
         {
             Decision dec;
             Decision olddec = decs[decs.Count - 1];
-            int p1 = 0.5;
-            int p2 = 0.6;
+            double p1 = 0.5;
+            double p2 = 0.6;
             int Z = 1;
             int Y = CalculY(olddec);
             int X = CalculX(olddec);
@@ -105,7 +105,7 @@ namespace Perudo.Backend
 
                 case Niveau.Moyen:
                     {
-                        int T = X * p1 + Y * p2;
+                        double T = X * p1 + Y * p2;
                         if (T < Z - 0.10)
                         {
                             dec = new Decision(Backend.Action.bluff);
@@ -149,27 +149,27 @@ namespace Perudo.Backend
                         
                         for (int i = 0; i < listDes.Count - 1; i++)
                         {
-                            if (listDes[i] == 1)
+                            if (listDes[i].valeur == "1")
                             {
                                 paco++;
                             }
-                            else if (listDes[i] == 2)
+                            else if (listDes[i].valeur == "2")
                             {
                                 deux++;
                             }
-                            else if (listDes[i] == 3)
+                            else if (listDes[i] .valeur == "3")
                             {
                                 trois++;
                             }
-                            else if (listDes[i] == 4)
+                            else if (listDes[i].valeur == "4")
                             {
                                 quatre++;
                             }
-                            else if (listDes[i] == 5)
+                            else if (listDes[i].valeur == "5")
                             {
                                 cinq++;
                             }
-                            else if (listDes[i] == 6)
+                            else if (listDes[i].valeur == "6")
                             {
                                 six++;
                             }
@@ -229,7 +229,8 @@ namespace Perudo.Backend
                     }
                     return dec;
             }
-           
+            return null;
+
         }
 
         int CalculX(Decision olddec)
@@ -308,7 +309,7 @@ namespace Perudo.Backend
             int tot = 0;
             for (int i = 0; i < mesDes.Count -1; i++)
             {
-                if (mesDes[i] == chiffre)
+                if (mesDes[i].valeur == chiffre.ToString())
                 {
                     tot++;
                 }

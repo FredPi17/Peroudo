@@ -24,7 +24,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Backend\Statistiques.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Backend\Tour.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Backend\views.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Backend\Joueur.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
