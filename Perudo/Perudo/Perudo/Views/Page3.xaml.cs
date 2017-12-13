@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ConsoleApp1;
 using Perudo.Backend;
+using sauvegarde_partie;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Action = Perudo.Backend.Action;
@@ -78,11 +79,9 @@ namespace Perudo.Views
 	        Manche.MainManche.Traiter(decision);
         }
 
-	    void SavePartie(object sender, EventArgs e)
+	    private void Save_OnClicked(object sender, EventArgs e)
 	    {
-	        
-	    }
-
-
-    }
+	        json.Text = exportimport.Save(Partie.MainPartie);
+        }
+	}
 }
