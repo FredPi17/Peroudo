@@ -40,8 +40,8 @@ namespace Perudo.Backend
         {
             Decision dec;
             Decision olddec = decs[decs.Count - 1];
-            int p1 = 0,5;
-            int p2 = 0,6;
+            int p1 = 0.5;
+            int p2 = 0.6;
             int Z = 1;
             int Y = CalculY(olddec);
             int X = CalculX(olddec);
@@ -106,11 +106,11 @@ namespace Perudo.Backend
                 case Niveau.Moyen:
                     {
                         int T = X * p1 + Y * p2;
-                        if (T < Z - 0,10)
+                        if (T < Z - 0.10)
                         {
                             dec = new Decision(Backend.Action.bluff);
                         }
-                        else if (T > Z + 0,10)
+                        else if (T > Z + 0.10)
                         {
                             if (Y >= 0 && Y < 5 )
                             {
