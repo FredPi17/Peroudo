@@ -97,15 +97,7 @@ namespace ConsoleApp1
             SetJoueurEnCours(JoueurListDansManche, IndexJoueurEnCours);
             MainManche = this;
         }
-
-        /// <summary>
-        /// Se termine quand quelqu'un perd/gagne un dé
-        /// Je ne sais pas si elle est utile celle là
-        /// </summary>
-        public void FinManche()
-        {
-
-        }
+     
         
 
         public void Traiter(Decision dec)
@@ -140,21 +132,21 @@ namespace ConsoleApp1
             //Si c'est vrai le bluff fonctionne alors le joueur précédent perd un dé
             if (NbDes > AncienneEnchere.nb)
             {
-               JoueurPasse.SetNbDes(JoueurPasse.GetNbDes() - 1);
                Debug.WriteLine("Le joueur précédent perd un dés");
                foreach (var joueur in JoueurListDansManche)
                {
+                    joueur.Resultat(GetIndexJoueurPrecedent(), true);
                    joueur.SetDes();
                }
             }
             //Sinon c'est que le bluff n'a pas fonctionné et c'est le joueur actuel qui perd un dé.
             else
             {
-               JoueurEnCours.SetNbDes(JoueurEnCours.GetNbDes() - 1);
                Debug.WriteLine("Le joueur actuel perd un dés");
 
                foreach (var joueur in Partie.MainPartie.JoueurList)
                {
+                    joueur.Resultat(IndexJoueurEnCours, true);
                    joueur.SetDes();
                }
             }
@@ -178,11 +170,11 @@ namespace ConsoleApp1
                 }
                 else
                 {
-                    JoueurEnCours.SetNbDes(JoueurEnCours.GetNbDes() + 1);
                     Debug.WriteLine("Le joueur actuel gagne un dés");
 
                     foreach (var joueur in JoueurListDansManche)
                     {
+                        joueur.Resultat(IndexJoueurEnCours, false);
                         joueur.SetDes();
                     }
                 }
@@ -191,11 +183,11 @@ namespace ConsoleApp1
             //Sinon c'est que le bluff n'a pas fonctionné et c'est le joueur actuel qui perd un dé.
             else
             {
-                JoueurEnCours.SetNbDes(JoueurEnCours.GetNbDes() - 1);
                 Debug.WriteLine("Le joueur actuel perd un dés");
 
                 foreach (var joueur in JoueurListDansManche)
                 {
+                    joueur.Resultat(IndexJoueurEnCours, true);
                     joueur.SetDes();
                 }
                 ChangerJoueurCourrant();
@@ -236,7 +228,7 @@ namespace ConsoleApp1
                     var np = new NavigationPage(new Page3());
                     Application.Current.MainPage = np;
                 }
-
+                
             if (JoueurEnCours.GetTypeJoueur() == TypeJoueur.ordinateur)
             {
                 Debug.WriteLine("IA");
