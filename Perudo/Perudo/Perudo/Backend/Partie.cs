@@ -90,10 +90,11 @@ namespace ConsoleApp1
         public bool FinJeu()
         {
             bool end = false;
-            if (JoueurList.Count(e => e.IsAlive() && e.GetTypeJoueur() == TypeJoueur.humain) == 1)
+            if (JoueurList.Count(e => e.IsAlive()) == 1)
             {
-                Humain humain = (Humain)JoueurList.First(e => e.IsAlive() && e.GetTypeJoueur() == TypeJoueur.humain);
-                string pseudoGagnant = humain.Getpseudo();
+                var joueur = JoueurList.First(e => e.IsAlive());
+
+                string pseudoGagnant = joueur.Getpseudo();
                 Debug.WriteLine($"C'est la fin du jeu. C'est {pseudoGagnant} qui a gagné");
                 return true;
             }

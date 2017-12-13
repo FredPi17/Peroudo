@@ -206,6 +206,7 @@ namespace ConsoleApp1
 
         void ChangerJoueurCourrant()
         {
+
             Debug.WriteLine("Changer le joueur courrant");
             //On dice roll les dés de tous les joueurs.
             JoueurPasse = JoueurEnCours;
@@ -213,13 +214,14 @@ namespace ConsoleApp1
             {
                 JoueurEnCours.Resultat(IndexJoueurEnCours, true);
             }
-                if (Partie.MainPartie.FinJeu())
-                {
-                    //Faire appel à la page de fin.
-                    Application.Current.MainPage = new NavigationPage(new Page4());
-                }
-                else
-                {
+
+            if (Partie.MainPartie.FinJeu())
+            {
+                 //Faire appel à la page de fin.
+                 Application.Current.MainPage = new NavigationPage(new Page4());
+            }
+            else
+            {
                     do
                     {
                         if (IndexJoueurEnCours == JoueurListDansManche.Count - 1)
@@ -249,7 +251,7 @@ namespace ConsoleApp1
 
         public List<Des> getTotalDes()
         {
-            List<Des> TotalDes = null;
+            List<Des> TotalDes = new List<Des>();
             foreach (Joueur j in Partie.MainPartie.JoueurList)
             {
                 foreach (var De in j.GetDes())

@@ -39,12 +39,16 @@ namespace Perudo.Backend
         public override Decision Jouer(List<Des> listDes)
         {
             Decision dec;
-            Decision olddec = decs[decs.Count - 1];
+            Decision olddec = Manche.AncienneEnchere;
             double p1 = 0.5;
             double p2 = 0.6;
             int Z = 1;
+
+            nbTotalDes = NbTotalDes();
+
             int Y = CalculY(olddec);
             int X = CalculX(olddec);
+
             switch (myNiveau)
             {
                 case Niveau.Facile:
@@ -247,6 +251,7 @@ namespace Perudo.Backend
 
         public override void Resultat(int idJoueur, bool perdu)
         {
+            
             if (id == idJoueur)
             {
                 if (perdu == true)
@@ -286,6 +291,7 @@ namespace Perudo.Backend
                     nbDes++;
                 }
                 listJoueurDes[i] = Tuple.Create(i, nbDes);
+                nbTotalDes = NbTotalDes();
             }
         }
 
