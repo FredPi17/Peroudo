@@ -39,7 +39,16 @@ namespace Perudo.Backend
         public override Decision Jouer(List<Des> listDes)
         {
             Decision dec;
-            Decision olddec = decs[decs.Count - 1];
+            if (decs.Capacity == 0)
+            {
+                dec = new Decision(Backend.Action.encherir, 1, 1);
+                return dec;
+            }
+            else
+            {
+                Decision olddec = decs[decs.Count - 1];
+            }
+
             double p1 = 0.5;
             double p2 = 0.6;
             int Z = 1;
