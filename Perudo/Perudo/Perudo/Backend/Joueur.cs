@@ -8,13 +8,31 @@ namespace Perudo
     public abstract class Joueur 
     {
         ///Propriétées
-                
+        protected List<Decision> decs = new List<Decision>();
+        public TypeJoueur typeJ { get; set; }
+        public int nbDes { get; set; }
+        public List<Des> mesDes { get; set; }
+        public int id { get; set; }
+        public bool alive { get; set; }
+        public string pseudo { get; set; }
+        private Randomizer randomizer;
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="id">L'index ou numéro du joueur</param>
         /// <param name="randomizer"></param>
-                
+        public Joueur(int id, string pseudo, Randomizer randomizer)
+        {
+            this.id = id;
+            this.randomizer = randomizer;
+            this.nbDes = 5;
+            this.mesDes = new List<Des>(5);
+            SetDes();
+            alive = true;
+            this.pseudo = pseudo;
+        }
+
         public void Notify(Decision des)
         {
             decs.Add(des);
@@ -99,23 +117,5 @@ namespace Perudo
         public abstract void Resultat(int idJoueur, bool perdu);
     }
 
-}
-
-        protected List<Decision> decs = new List<Decision>();
-        public TypeJoueur typeJ { get; set; }
-        public int nbDes { get; set; }
-        public List<Des> mesDes { get; set; }
-        public int id { get; set; }
-        public bool alive { get; set; }
-        public string pseudo { get; set; }
-        private Randomizer randomizer;
-        public Joueur(int id, Randomizer randomizer)
-        {
-            this.id = id;
-            this.randomizer = randomizer;
-            this.nbDes = 5;
-            this.mesDes = new List<Des>(5);
-            SetDes();
-            alive = true;
-        }
+}       
 
