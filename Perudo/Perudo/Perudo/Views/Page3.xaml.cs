@@ -55,6 +55,10 @@ namespace Perudo.Views
 	        Manche.MainManche.Traiter(decision);
         }
 
+	    void SavePartie(object sender, EventArgs e)
+	    {
+	        
+	    }
 
 
     }
