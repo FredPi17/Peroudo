@@ -242,11 +242,22 @@ namespace ConsoleApp1
             if (JoueurEnCours.GetTypeJoueur() == TypeJoueur.ordinateur)
             {
                 Debug.WriteLine("IA");
-                /* Decision decisionIA = JoueurEnCours(JoueurListDansManche).Jouer();
-                 Traiter(decisionIA);*/
+                Decision decisionIA = JoueurEnCours.Jouer(getTotalDes());
+                Traiter(decisionIA);
             }
         }
 
-
+        public List<Des> getTotalDes()
+        {
+            List<Des> TotalDes = null;
+            foreach (Joueur j in Partie.MainPartie.JoueurList)
+            {
+                foreach (var De in j.GetDes())
+                {
+                   TotalDes.Add(De); 
+                }
+            }
+            return TotalDes;
+        }
     }
 }

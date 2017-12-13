@@ -20,9 +20,7 @@ namespace Perudo.Views
         {
 			InitializeComponent ();
             Round.Text = "Round n° " + Manche.nbRound.ToString();
-            numManche.Text = "Manche n° " + Manche.nbManche.ToString();
             JoueurEnCours.Text = "Joueur en cours: " + Manche.JoueurEnCours.Getpseudo();
-            joueurSituation.Text = Manche.actionJoueur.ToString();
 
             Debug.WriteLine($"{Manche.JoueurEnCours.Getpseudo()}");
 

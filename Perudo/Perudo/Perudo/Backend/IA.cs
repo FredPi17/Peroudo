@@ -36,7 +36,7 @@ namespace Perudo.Backend
         /// Permet a l'IA de jouer
         /// </summary>
         /// <returns>une decision</returns>
-        public Decision Jouer(List<Des> listDes)
+        public override Decision Jouer(List<Des> listDes)
         {
             Decision dec;
             Decision olddec = decs[decs.Count - 1];

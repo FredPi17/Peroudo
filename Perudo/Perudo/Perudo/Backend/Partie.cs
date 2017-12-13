@@ -16,13 +16,13 @@ namespace ConsoleApp1
         public List<Joueur> JoueurList { get; set; }
         public static Partie MainPartie { get; set; }
 
-        public Partie(int nbHumains, int nbMachines, Randomizer randomizer)
+        public Partie(int nbHumains, int nbMachines, Randomizer randomizer, Niveau niveau)
         {
             this.Randomizer = randomizer;
 
             JoueurList = new List<Joueur>(nbHumains + nbMachines);
             this.AddHumain(nbHumains);
-            this.AddIA(nbMachines);
+            this.AddIA(nbMachines, nbHumains + nbMachines, niveau);
 
             Manche.MainManche = new Manche(JoueurList);
             
@@ -38,11 +38,11 @@ namespace ConsoleApp1
             }
         }
 
-        public void AddIA(int nbJoueurs)
+        public void AddIA(int nbJoueurs, int nbTotalJoueur, Niveau niveau)
         {
             for (int i = 0; i < nbJoueurs; i++)
             {
-                Joueur Joueur = new Humain("joueur" + i, i, Randomizer);
+                Joueur Joueur = new IA(niveau, i, "IA" + i, Randomizer, nbTotalJoueur);
                 JoueurList.Add(Joueur);
             }
         }

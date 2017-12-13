@@ -116,6 +116,7 @@ namespace Perudo
         /// <param name="idJoueur">le numéro du joueur qui a perdu ou ganger un dé</param>
         /// <param name="perdu">vrai, le joueur perds un dé, faux le joueur gagne un dé</param>
         public abstract void Resultat(int idJoueur, bool perdu);
+        public abstract Decision Jouer(List<Des> TotalDes);
     }
 
 }       

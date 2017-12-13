@@ -31,5 +31,10 @@ namespace Perudo.Backend
                 }
             }
         }
+
+        public override Decision Jouer(List<Des> TotalDes)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

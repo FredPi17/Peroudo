@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Perudo.Backend
 {
-    enum Niveau
+    public enum Niveau
     {
         Facile = 0,
         Moyen = 1,

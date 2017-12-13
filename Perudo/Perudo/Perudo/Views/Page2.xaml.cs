@@ -43,7 +43,21 @@ namespace Perudo.Views
             if (CheckMaxJoueurs(humains, machine))
 	        {
 	            Debug.WriteLine("La partie va commencer");
-	            new Partie(humains, machine, Randomizer);
+	            Debug.WriteLine(picker.SelectedItem.ToString());
+	            Niveau niveau = Niveau.Facile;
+                if (picker.SelectedItem.ToString() == "Facile")
+	            {
+	                niveau = Niveau.Facile;
+                }
+	            else if (picker.SelectedItem.ToString() == "Moyen")
+	            {
+	                niveau = Niveau.Moyen;
+                }
+                else if (picker.SelectedItem.ToString() == "Difficile")
+	            {
+	                niveau = Niveau.Difficile;
+                }
+                new Partie(humains, machine, Randomizer, niveau);
 
 	            var np = new NavigationPage(new Page3());
 	            Application.Current.MainPage = np;
