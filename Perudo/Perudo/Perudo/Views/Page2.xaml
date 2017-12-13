@@ -1,21 +1,47 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             
              x:Class="Perudo.Views.Page2">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout x:Name="layout">
             <Label Text="Veuillez sélectionner le nombre de joueurs"
                 HorizontalOptions="CenterAndExpand"
-                MarginTop="20"
             />
-            <Button Name="btnOK"
-                    Click="ButtonClicked">OK</Button>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="Nombre d'humains" Grid.Row="0" Grid.Column="0" HorizontalOptions="CenterAndExpand"/>
+                <Entry x:Name="Humans" Placeholder="Entrez un nombre" Grid.Row="1" Grid.Column="0"/>
+                
+                <Label x:Name="Alert" Text=""  Grid.Row="2" Grid.Column="0" IsVisible="False" TextColor="Red"></Label>
+                
+                <Label Text="Nombre de machines" Grid.Row="0" Grid.Column="1" HorizontalOptions="CenterAndExpand"/>
+                <Entry x:Name="Machine" Placeholder="Entrez un nombre" Grid.Row="1" Grid.Column="1"/>
+                
+                <Picker x:Name="picker" Title="Selectionnez la difficulté" Grid.Row="2" Grid.Column="1" >
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}" >
+                            <x:String>Facile</x:String>
+                            <x:String>Moyen</x:String>
+                            <x:String>Difficile</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </Grid>
+            <Button x:Name="submit3" Text="Valider" Clicked="submit_Clicked" />
 
-            <TextBlock Text="The text contents of this TextBlock element."/>
-            
-            
+
         </StackLayout>
-        
+           
     </ContentPage.Content>
 </ContentPage>

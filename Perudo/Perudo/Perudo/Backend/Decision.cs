@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Perudo.Backend
 {
-    public class Decision
+    class Decision
     {
         public Action actionEncours;
         public int de;

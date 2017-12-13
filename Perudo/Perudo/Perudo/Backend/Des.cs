@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsoleApp1;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -14,14 +15,10 @@ namespace Perudo.Backend
             this.randomizer = randomizer;
             valeur = this.DiceRoll();
         }
-
+       
         public string DiceRoll()
         {
-            int result;
-            string valeur;
-
-            string toto = randomizer.Next(1, 7).ToString();
-            return toto;
+            return randomizer.Next(1, 7).ToString();
         }
     }
 }

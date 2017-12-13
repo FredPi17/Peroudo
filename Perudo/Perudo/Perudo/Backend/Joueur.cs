@@ -8,27 +8,12 @@ namespace Perudo
     public abstract class Joueur 
     {
         ///Propriétées
-        protected TypeJoueur typeJ;
-        protected string pseudo;
-        protected int nbDes = 5;
-        protected List<Des> mesDes = new List<Des>(5);
-        protected int id;
-        protected bool alive = true;
-        private Randomizer randomizer;
-        protected List<Decision> decs = new List<Decision>();
                 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="id">L'index ou numéro du joueur</param>
         /// <param name="randomizer"></param>
-        public Joueur(int id, string pseudo, Randomizer randomizer)
-        {
-            this.id = id;
-            this.randomizer = randomizer;
-            this.pseudo = pseudo;
-            SetDes();
-        }
                 
         public void Notify(Decision des)
         {
@@ -115,3 +100,22 @@ namespace Perudo
     }
 
 }
+
+        protected List<Decision> decs = new List<Decision>();
+        public TypeJoueur typeJ { get; set; }
+        public int nbDes { get; set; }
+        public List<Des> mesDes { get; set; }
+        public int id { get; set; }
+        public bool alive { get; set; }
+        public string pseudo { get; set; }
+        private Randomizer randomizer;
+        public Joueur(int id, Randomizer randomizer)
+        {
+            this.id = id;
+            this.randomizer = randomizer;
+            this.nbDes = 5;
+            this.mesDes = new List<Des>(5);
+            SetDes();
+            alive = true;
+        }
+
