@@ -11,11 +11,24 @@ using Xamarin.Forms;
 
 namespace ConsoleApp1
 {
+
     public class Partie
     {
+        /// <summary>
+        /// Création d'une liste : 
+        /// - JoueurList avec la liste des joueurs
+        /// Et création MainPartie à partir de Partir
+        /// </summary>
         public List<Joueur> JoueurList { get; set; }
         public static Partie MainPartie { get; set; }
 
+        /// <summary>
+        /// Création d'un partie avec l'ajout du nombre d'humains, de machines et création d'une manche
+        /// </summary>
+        /// <param name="nbHumains">Nombre d'humains</param>
+        /// <param name="nbMachines">Nombre d'IA</param>
+        /// <param name="randomizer">Fonction Randomizer qui crée les dés</param>
+        /// <param name="niveau">Difficulté des IA</param>
         public Partie(int nbHumains, int nbMachines, Randomizer randomizer, Niveau niveau)
         {
             this.Randomizer = randomizer;
@@ -30,6 +43,10 @@ namespace ConsoleApp1
             Partie.MainPartie = this;
         }
 
+        /// <summary>
+        /// Ajout d'humains dans une partie
+        /// </summary>
+        /// <param name="nbJoueurs">Nombre de joueurs à créer</param>
         public void AddHumain(int nbJoueurs)
         {
             for (int i = 0; i < nbJoueurs; i++)
@@ -39,6 +56,12 @@ namespace ConsoleApp1
             }
         }
 
+        /// <summary>
+        /// Ajout des IA dans la partie
+        /// </summary>
+        /// <param name="nbJoueurs">Nombre de joueurs</param>
+        /// <param name="nbTotalJoueur">Nombre total de joueurs dans la partie</param>
+        /// <param name="niveau">Niveau de difficulté </param>
         public void AddIA(int nbJoueurs, int nbTotalJoueur, Niveau niveau)
         {
             for (int i = 0; i < nbJoueurs; i++)
@@ -47,9 +70,14 @@ namespace ConsoleApp1
                 JoueurList.Add(Joueur);
             }
         }
-
+        
         public Randomizer Randomizer { get; set; }
 
+        /// <summary>
+        /// Récupère le nombre de dés 
+        /// </summary>
+        /// <param name="valeur"></param>
+        /// <returns></returns>
         public int GetNbDes(string valeur)
         {
             int compteurDes = 0;
@@ -73,7 +101,7 @@ namespace ConsoleApp1
         /// <returns></returns>
         public int CountAlive()
         {
-            //Vérifier si il reste un dans JoueurListDansManche
+            //Vérifier s'il reste un dans JoueurListDansManche
             int compteur = 0;
             foreach (var joueur in JoueurList)
             {
@@ -86,7 +114,7 @@ namespace ConsoleApp1
         }
 
         /// <summary>
-        /// Fonction qui affiche le joueur ou IA gagnant. Elle renvois rien car elle fait appel à d'autre fonctions comme Sauvegarde etc...
+        /// Fonction qui affiche le joueur ou IA gagnant. Elle renvoit rien car elle fait appel à d'autres fonctions comme Sauvegarde etc...
         /// </summary>
         public bool FinJeu()
         {

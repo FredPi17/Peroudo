@@ -8,7 +8,7 @@ namespace Perudo
 {
     public abstract class Joueur
     {
-        ///Propriétées
+        ///Propriétées du joueur
         protected List<Decision> decs = new List<Decision>();
         public TypeJoueur typeJ { get; set; }
         public int nbDes { get; set; }
@@ -19,7 +19,7 @@ namespace Perudo
         private Randomizer randomizer;
 
         /// <summary>
-        /// 
+        /// Paramètres du joueur en récupérant les informations des méthodes qui le crée 
         /// </summary>
         /// <param name="id">L'index ou numéro du joueur</param>
         /// <param name="randomizer"></param>
@@ -33,19 +33,25 @@ namespace Perudo
             alive = true;
             this.pseudo = pseudo;
         }
-
+        /// <summary>
+        /// Notification du joueur sel
+        /// </summary>
+        /// <param name="des"></param>
         public void Notify(Decision des)
         {
             decs.Add(des);
         }
-
+        /// <summary>
+        /// Renvoie le pseudo du joueur pointé
+        /// </summary>
+        /// <returns></returns>
         public string Getpseudo()
         {
             return pseudo;
         }
 
         /// <summary>
-        /// 
+        /// Renvoie l'id du joueur pointé 
         /// </summary>
         /// <returns>Donne l'id du joueur</returns>
         public int GetId()
@@ -53,7 +59,7 @@ namespace Perudo
             return id;
         }
         /// <summary>
-        /// 
+        /// Vérifie si le joueur est toujours en vie => dés supérieur à 0
         /// </summary>
         /// <returns>Si le joueur a encore des dés </returns>
         public bool IsAlive()
@@ -61,7 +67,7 @@ namespace Perudo
             return alive;
         }
         /// <summary>
-        /// 
+        /// Récupère le nombre de dés du joueur pointé
         /// </summary>
         /// <returns>Le nombre de dés du joueur</returns>
         public int GetNbDes()
@@ -69,7 +75,7 @@ namespace Perudo
             return nbDes;
         }
         /// <summary>
-        /// 
+        /// Affiche les dés du joueur pointé
         /// </summary>
         /// <returns>Une liste avec la valeur de chaque dés du Joueur</returns>
         public List<Des> GetDes()
@@ -77,9 +83,9 @@ namespace Perudo
             return mesDes;
         }
         /// <summary>
-        /// 
+        /// Modifie le nombre de dés du joueur pointé 
         /// </summary>
-        /// <param name="nombre">Modifie le nombre de des du joueur</param>
+        /// <param name="nombre"></param>
         public void SetNbDes(int nombre)
         {
             if (nombre <= 5)
@@ -88,7 +94,7 @@ namespace Perudo
             }
         }
         /// <summary>
-        /// 
+        /// Regénère les dés du joueur
         /// </summary>
         /// <param name="nbDes">Lance tous les dés du joueur</param>
         public void SetDes()
@@ -103,7 +109,7 @@ namespace Perudo
             }
         }
         /// <summary>
-        /// 
+        /// Retourne le type du joueur pointé => IA ou humain
         /// </summary>
         /// <returns>Le type du joueur</returns>
         public TypeJoueur GetTypeJoueur()

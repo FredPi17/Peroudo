@@ -12,6 +12,9 @@ using Action = Perudo.Backend.Action;
 
 namespace ConsoleApp1
 {
+    /// <summary>
+    /// Manche est la partie du jeu qui compose une manche dans le jeu
+    /// </summary>
     class Manche
     {
         public List<Joueur> JoueurListDansManche;
@@ -58,7 +61,7 @@ namespace ConsoleApp1
         }
 
         /// <summary>
-        /// Retourne l'id du joueur
+        /// Retourne l'id du joueur précédent
         /// </summary>
         /// <returns></returns>
         public int GetIndexJoueurPrecedent()
@@ -87,7 +90,7 @@ namespace ConsoleApp1
         }*/
 
         /// <summary>
-        /// 
+        /// Classe consituant la manche avec les propriétés qui la constitue.
         /// </summary>
         /// <param name="joueurs"></param>
         /// <param name="nbTotalDeDes"></param>
@@ -105,15 +108,9 @@ namespace ConsoleApp1
         }
 
         /// <summary>
-        /// Se termine quand quelqu'un perd/gagne un dé
-        /// Je ne sais pas si elle est utile celle là
+        /// Récupération de l'action faite par le joueur et appel des fonctions par conséquent.
         /// </summary>
-        public void FinManche()
-        {
-
-        }
-        
-
+        /// <param name="dec">Décision prise par le joueur</param>
         public void Traiter(Decision dec)
         {
             if (dec.actionEncours == Action.bluff)
@@ -137,6 +134,12 @@ namespace ConsoleApp1
             }
         }
 
+        /// <summary>
+        /// VérificationBluff permet de vérifier l'exactitude des données entrées précédemment et prend une décision 
+        /// sur le joueur en cours ou le précédent
+        /// Le joueur qui vient de jouer peut perdre un dé si le joueur précédent avait raison sur la valeur annoncée, sinon
+        /// le joueur qui dit bluff perd un dé.
+        /// </summary>
         public void verificationBluff()
         {
             //Renvois vrai si l'enchère précedente est vrai, on vérifis donc le nombre total de valeur dé.
@@ -173,6 +176,11 @@ namespace ConsoleApp1
             ChangerJoueurCourrant();
         }
 
+        /// <summary>
+        /// Calza est la fonction qui vérifie si la valeur en cours est exacte.
+        /// Si le joueur qui dit Calza a raison, il gagne un dé. 
+        /// Sinon il perd un dé. 
+        /// </summary>
         public void verificationCalza()
         {
             var valeur = AncienneEnchere.de.ToString();
@@ -222,6 +230,9 @@ namespace ConsoleApp1
             }
         }
 
+        /// <summary>
+        /// Fonction qui permet de passer d'un joueur au suivant au fur et à mesure de la manche
+        /// </summary>
         void ChangerJoueurCourrant()
         {
             Debug.WriteLine("Changer le joueur courant");
@@ -268,6 +279,10 @@ namespace ConsoleApp1
             }
         }
 
+        /// <summary>
+        /// Récupération du nombre total de dés dans la partie
+        /// </summary>
+        /// <returns></returns>
         public List<Des> getTotalDes()
         {
             List<Des> TotalDes = new List<Des>();
