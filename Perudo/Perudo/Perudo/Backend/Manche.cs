@@ -133,7 +133,7 @@ namespace ConsoleApp1
                 AncienneEnchere = dec;
                 Debug.WriteLine($"dec : {dec.nb} dés de {dec.de}");
                 Debug.WriteLine($"AncienneEnchère: {AncienneEnchere.nb} dés de {AncienneEnchere.de}");
-                ChangerJoueurCourrant();
+                ChangerJoueurCourrant(true, false);
             }
         }
 
@@ -145,32 +145,41 @@ namespace ConsoleApp1
             int NbDes = Partie.MainPartie.GetNbDes(valeur);
             nbRound = 1;
             nbManche += 1;
-
+            bool bluffMarche;
+            int indexJoueurPerdu = -1;
             //Si c'est vrai le bluff fonctionne alors le joueur précédent perd un dé
             if (NbDes > AncienneEnchere.nb)
             {
-               JoueurPasse.SetNbDes(JoueurPasse.GetNbDes() - 1);
+                indexJoueurPerdu = GetIndexJoueurPrecedent();
+                //JoueurPasse.Resultat(, true);
                Debug.WriteLine("Le joueur précédent perd un dés");
                 AncienneEnchere = null;
                 actionJoueur = JoueurPasse.Getpseudo() + " perd un dé";
-               foreach (var joueur in JoueurListDansManche)
-               {
-                   joueur.SetDes();
-               }
+                bluffMarche = true;
             }
             //Sinon c'est que le bluff n'a pas fonctionné et c'est le joueur actuel qui perd un dé.
             else
             {
-               JoueurEnCours.SetNbDes(JoueurEnCours.GetNbDes() - 1);
+                indexJoueurPerdu = IndexJoueurEnCours;
+                //JoueurEnCours.Resultat(IndexJoueurEnCours, true);
                Debug.WriteLine("Le joueur actuel perd un dés");
                 AncienneEnchere = null;
                 actionJoueur = JoueurEnCours.Getpseudo() + " perd un dé";
-                foreach (var joueur in Partie.MainPartie.JoueurList)
-               {
-                   joueur.SetDes();
-               }
+                bluffMarche = false;
             }
-            ChangerJoueurCourrant();
+
+            if (indexJoueurPerdu > -1)
+            {
+                foreach (var joueur in Partie.MainPartie.JoueurList)
+                {
+                    joueur.Resultat(indexJoueurPerdu, true);
+                }
+            }
+            foreach (var joueur in Partie.MainPartie.JoueurList)
+            {
+                joueur.SetDes();
+            }
+            ChangerJoueurCourrant(false, bluffMarche);
         }
 
         public void verificationCalza()
@@ -193,7 +202,7 @@ namespace ConsoleApp1
                 }
                 else
                 {
-                    JoueurEnCours.SetNbDes(JoueurEnCours.GetNbDes() + 1);
+                    JoueurEnCours.Resultat(IndexJoueurEnCours, false);
                     Debug.WriteLine("Le joueur actuel gagne un dé");
                     actionJoueur = JoueurEnCours.Getpseudo() + " gagne un dé";
                     nbManche = 1;
@@ -204,12 +213,12 @@ namespace ConsoleApp1
                         joueur.SetDes();
                     }
                 }
-                ChangerJoueurCourrant();
+                ChangerJoueurCourrant(false, false);
             }
             //Sinon c'est que le bluff n'a pas fonctionné et c'est le joueur actuel qui perd un dé.
             else
             {
-                JoueurEnCours.SetNbDes(JoueurEnCours.GetNbDes() - 1);
+                JoueurEnCours.Resultat(IndexJoueurEnCours, true);
                 Debug.WriteLine("Le joueur actuel perd un dé");
                 actionJoueur = JoueurEnCours.Getpseudo() + " perd un dé";
                 nbManche = 1;
@@ -218,16 +227,26 @@ namespace ConsoleApp1
                 {
                     joueur.SetDes();
                 }
-                ChangerJoueurCourrant();
+                ChangerJoueurCourrant(false, false);
             }
         }
 
-        void ChangerJoueurCourrant()
+        void ChangerJoueurCourrant(bool enchere, bool joueurPrecedent)
         {
             Debug.WriteLine("Changer le joueur courant");
             //On dice roll les dés de tous les joueurs.
-            JoueurPasse = JoueurEnCours;
-            
+            if (enchere)
+            {
+                JoueurPasse = JoueurEnCours;
+            }
+            else if (joueurPrecedent)
+            {
+                JoueurEnCours = JoueurPasse;
+            }
+            else
+            {
+                
+            }
 
             if (JoueurEnCours.GetNbDes() == 0)
             {

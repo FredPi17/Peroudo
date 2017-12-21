@@ -34,7 +34,7 @@ namespace ConsoleApp1
         {
             for (int i = 0; i < nbJoueurs; i++)
             {
-                Joueur Joueur = new Humain("joueur" + i, 0, Randomizer);
+                Joueur Joueur = new Humain("joueur" + i, i, Randomizer);
                 JoueurList.Add(Joueur);
             }
         }
