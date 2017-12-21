@@ -14,12 +14,13 @@ namespace Perudo.Backend
 
 
         /// <summary>
-        /// Constructeur d'IA
+        /// Constructeur de l'IA
         /// </summary>
-        /// <param name="choix">Le choix du niveau</param>
-        /// <param name="id">l'index ou le numéro du joueur</param>
+        /// <param name="choix">Le choix du niveau de l'IA</param>
+        /// <param name="id">L'identifant ou l'index de l'IA</param>
         /// <param name="pseudo">Le pseudo de l'IA</param>
-        /// <param name="randomizer">pour les dés</param>
+        /// <param name="randomizer">Permet de calculer les dès</param>
+        /// <param name="nbJoueur">le nombre total de Joueur (humain & IA)</param>
         public IA(Niveau choix, int id, string pseudo, Randomizer randomizer, int nbJoueur)
             : base(id, pseudo, randomizer)
         {
@@ -33,9 +34,10 @@ namespace Perudo.Backend
         }
 
         /// <summary>
-        /// Permet a l'IA de jouer
+        /// Le cerveau de l'IA
         /// </summary>
-        /// <returns>une decision</returns>
+        /// <param name="listDes">La liste de tous les dès sur la table</param>
+        /// <returns>La decision de l'IA</returns>
         public override Decision Jouer(List<Des> listDes)
         {
             Decision dec;
@@ -238,24 +240,38 @@ namespace Perudo.Backend
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="olddec">l'enchère en cours</param>
+        /// <returns></returns>
         int CalculX(Decision olddec)
         {
             int x = olddec.nb / nbTotalDes;
             return x;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="olddec">l'enchère en cours</param>
+        /// <returns></returns>
         int CalculY(Decision olddec)
         {
             int y = (olddec.nb - Combien(olddec.de)) / (nbTotalDes - nbDes);
             return y;
         }
 
+        /// <summary>
+        /// Permet de savoir quel joueur perd/gagne un dè
+        /// </summary>
+        /// <param name="idJoueur">l'identifiant du Joueur qui a une modification de dès</param>
+        /// <param name="perdu">permet de savoir si le joueur a perdu ou gagné un dès</param>
         public override void Resultat(int idJoueur, bool perdu)
         {
-
             if (id == idJoueur)
             {
-                if (perdu == true)
+                if (perdu)
                 {
                     nbDes--;
                     if (nbDes == 0)
@@ -272,7 +288,7 @@ namespace Perudo.Backend
             {
                 int i = 0;
                 bool foundJoueur = false;
-                while (i < listJoueurDes.Count - 1 || foundJoueur == false)
+                while (i < listJoueurDes.Count || foundJoueur == false)
                 {
                     if (listJoueurDes[i].Item1 == idJoueur)
                     {
@@ -284,7 +300,7 @@ namespace Perudo.Backend
                     }
                 }
                 int nbDes = listJoueurDes[i].Item2;
-                if (perdu == true)
+                if (perdu)
                 {
                     nbDes--;
                 }
@@ -297,10 +313,14 @@ namespace Perudo.Backend
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>le nombre total de dès sur la table</returns>
         private int NbTotalDes()
         {
             int tot = 0;
-            for (int j = 0; j < listJoueurDes.Count - 1; j++)
+            for (int j = 0; j < listJoueurDes.Count; j++)
             {
                 tot += listJoueurDes[j].Item2;
             }

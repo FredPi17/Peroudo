@@ -18,7 +18,7 @@ namespace Perudo.Backend
         {
             if (id == idJoueur)
             {
-                if (perdu == true)
+                if (perdu)
                 {
                     nbDes--;
                     if (nbDes == 0)
