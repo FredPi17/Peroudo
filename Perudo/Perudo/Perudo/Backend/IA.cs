@@ -288,7 +288,7 @@ namespace Perudo.Backend
             {
                 int i = 0;
                 bool foundJoueur = false;
-                while (i < listJoueurDes.Count || foundJoueur == false)
+                while (i < listJoueurDes.Count && foundJoueur == false)
                 {
                     if (listJoueurDes[i].Item1 == idJoueur)
                     {
@@ -335,7 +335,7 @@ namespace Perudo.Backend
         private int Combien(int chiffre)
         {
             int tot = 0;
-            for (int i = 0; i < mesDes.Count - 1; i++)
+            for (int i = 0; i < mesDes.Count; i++)
             {
                 if (mesDes[i].valeur == chiffre.ToString())
                 {
