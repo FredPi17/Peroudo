@@ -5,8 +5,8 @@ using System.Text;
 using ConsoleApp1;
 
 namespace Perudo
-{  
-    public abstract class Joueur 
+{
+    public abstract class Joueur
     {
         ///Propriétées
         protected List<Decision> decs = new List<Decision>();
@@ -119,5 +119,5 @@ namespace Perudo
         public abstract Decision Jouer(List<Des> TotalDes);
     }
 
-}       
+}
 

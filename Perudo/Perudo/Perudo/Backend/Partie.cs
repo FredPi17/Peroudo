@@ -30,7 +30,7 @@ namespace ConsoleApp1
             Partie.MainPartie = this;
         }
 
-        public void AddJoueur(int nbJoueurs)
+        public void AddHumain(int nbJoueurs)
         {
             for (int i = 0; i < nbJoueurs; i++)
             {
