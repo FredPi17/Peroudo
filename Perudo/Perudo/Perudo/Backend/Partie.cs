@@ -16,12 +16,13 @@ namespace ConsoleApp1
         public List<Joueur> JoueurList { get; set; }
         public static Partie MainPartie { get; set; }
 
-        public Partie(int nbJoueurs, Randomizer randomizer)
+        public Partie(int nbHumains, int nbMachines, Randomizer randomizer, Niveau niveau)
         {
             this.Randomizer = randomizer;
 
-            JoueurList = new List<Joueur>(nbJoueurs);
-            this.AddJoueur(nbJoueurs);
+            JoueurList = new List<Joueur>(nbHumains + nbMachines);
+            this.AddHumain(nbHumains);
+            this.AddIA(nbMachines, nbHumains + nbMachines, niveau);
 
             Manche.MainManche = new Manche(JoueurList);
 
@@ -38,9 +39,13 @@ namespace ConsoleApp1
             }
         }
 
-        public void AddJoueur(Joueur joueur)
+        public void AddIA(int nbJoueurs, int nbTotalJoueur, Niveau niveau)
         {
-            JoueurList.Add(joueur);
+            for (int i = 0; i < nbJoueurs; i++)
+            {
+                Joueur Joueur = new IA(niveau, i, "IA" + i, Randomizer, nbTotalJoueur);
+                JoueurList.Add(Joueur);
+            }
         }
 
         public Randomizer Randomizer { get; set; }
@@ -86,10 +91,11 @@ namespace ConsoleApp1
         public bool FinJeu()
         {
             bool end = false;
-            if (JoueurList.Count(e => e.IsAlive() && e.GetTypeJoueur() == TypeJoueur.humain) == 1)
+            if (JoueurList.Count(e => e.IsAlive()) == 1)
             {
-                Humain humain = (Humain)JoueurList.First(e => e.IsAlive() && e.GetTypeJoueur() == TypeJoueur.humain);
-                string pseudoGagnant = humain.Getpseudo();
+                var joueur = JoueurList.First(e => e.IsAlive());
+
+                string pseudoGagnant = joueur.Getpseudo();
                 Debug.WriteLine($"C'est la fin du jeu. C'est {pseudoGagnant} qui a gagné");
                 return true;
             }

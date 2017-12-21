@@ -5,33 +5,44 @@ using System.Text;
 using ConsoleApp1;
 
 namespace Perudo
-{
-    public abstract class Joueur
+{  
+    public abstract class Joueur 
     {
         ///Propriétées
+        protected List<Decision> decs = new List<Decision>();
         public TypeJoueur typeJ { get; set; }
         public int nbDes { get; set; }
         public List<Des> mesDes { get; set; }
         public int id { get; set; }
         public bool alive { get; set; }
         public string pseudo { get; set; }
-
         private Randomizer randomizer;
 
-        public Joueur(int id, Randomizer randomizer)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id">L'index ou numéro du joueur</param>
+        /// <param name="randomizer"></param>
+        public Joueur(int id, string pseudo, Randomizer randomizer)
         {
             this.id = id;
             this.randomizer = randomizer;
             this.nbDes = 5;
             this.mesDes = new List<Des>(5);
-            alive = true;
             SetDes();
+            alive = true;
+            this.pseudo = pseudo;
         }
+
+        public void Notify(Decision des)
+        {
+            decs.Add(des);
+        }
+
         public string Getpseudo()
         {
             return pseudo;
         }
-
 
         /// <summary>
         /// 
@@ -49,7 +60,6 @@ namespace Perudo
         {
             return alive;
         }
-
         /// <summary>
         /// 
         /// </summary>
@@ -76,10 +86,6 @@ namespace Perudo
             {
                 nbDes = nombre;
             }
-            else
-            {
-
-            }
         }
         /// <summary>
         /// 
@@ -104,14 +110,14 @@ namespace Perudo
         {
             return typeJ;
         }
-
-        public abstract Backend.Action Jouer();
         /// <summary>
         /// 
         /// </summary>
         /// <param name="idJoueur">le numéro du joueur qui a perdu ou ganger un dé</param>
         /// <param name="perdu">vrai, le joueur perds un dé, faux le joueur gagne un dé</param>
         public abstract void Resultat(int idJoueur, bool perdu);
+        public abstract Decision Jouer(List<Des> TotalDes);
     }
 
-}
+}       
+

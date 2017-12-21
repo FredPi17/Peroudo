@@ -227,13 +227,14 @@ namespace ConsoleApp1
             {
                 JoueurEnCours.Resultat(IndexJoueurEnCours, true);
             }
-                if (Partie.MainPartie.FinJeu())
-                {
-                    //Faire appel à la page de fin.
-                    Application.Current.MainPage = new NavigationPage(new Page4());
-                }
-                else
-                {
+
+            if (Partie.MainPartie.FinJeu())
+            {
+                 //Faire appel à la page de fin.
+                 Application.Current.MainPage = new NavigationPage(new Page4());
+            }
+            else
+            {
                     do
                     {
                         if (IndexJoueurEnCours == JoueurListDansManche.Count - 1)
@@ -256,11 +257,22 @@ namespace ConsoleApp1
             if (JoueurEnCours.GetTypeJoueur() == TypeJoueur.ordinateur)
             {
                 Debug.WriteLine("IA");
-                /* Decision decisionIA = JoueurEnCours(JoueurListDansManche).Jouer();
-                 Traiter(decisionIA);*/
+                Decision decisionIA = JoueurEnCours.Jouer(getTotalDes());
+                Traiter(decisionIA);
             }
         }
 
-
+        public List<Des> getTotalDes()
+        {
+            List<Des> TotalDes = new List<Des>();
+            foreach (Joueur j in Partie.MainPartie.JoueurList)
+            {
+                foreach (var De in j.GetDes())
+                {
+                   TotalDes.Add(De); 
+                }
+            }
+            return TotalDes;
+        }
     }
 }
