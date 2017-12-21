@@ -68,7 +68,7 @@ namespace Perudo.Views
 	        }
 	        if (Manche.AncienneEnchere != null)
 	        {
-	            if (nbValeurDe >= Manche.AncienneEnchere.nb)
+	            if (nbValeurDe > Manche.AncienneEnchere.nb)
 	            {
 	                if (valeurDes >= Manche.AncienneEnchere.de)
 	                {
@@ -87,13 +87,30 @@ namespace Perudo.Views
 
         void Click_Kelza(object sender, EventArgs e)
 	    {
-            Decision decision = new Decision(Action.calza);
-	        Manche.MainManche.Traiter(decision);
-	    }
+	        if (Manche.AncienneEnchere != null)
+	        {
+	            Decision decision = new Decision(Action.calza);
+	            Manche.MainManche.Traiter(decision);
+            }
+	        else
+	        {
+	            joueurSituation.Text = "Vous ne pouvez pas faire de calza sans enchères";
+            }
+
+        }
 	    void Click_Bluff(object sender, EventArgs e)
 	    {
-	        Decision decision = new Decision(Action.bluff);
-	        Manche.MainManche.Traiter(decision);
+	        if (Manche.AncienneEnchere != null)
+	        {
+	            Decision decision = new Decision(Action.bluff);
+	            Manche.MainManche.Traiter(decision);
+	        }
+	        else
+	        {
+	            joueurSituation.Text = "Vous ne pouvez pas faire de bluff sans enchères";
+
+            }
+
         }
 
 	    private void Save_OnClicked(object sender, EventArgs e)
