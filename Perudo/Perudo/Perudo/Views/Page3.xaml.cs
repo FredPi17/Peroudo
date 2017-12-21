@@ -20,8 +20,9 @@ namespace Perudo.Views
         {
 			InitializeComponent ();
             Round.Text = "Round n° " + Manche.nbRound.ToString();
-            JoueurEnCours.Text = "Joueur en cours: " + Manche.JoueurEnCours.Getpseudo();
-
+            numManche.Text = "Manche n° " + Manche.nbManche.ToString();
+            JoueurEnCours.Text = "Joueur en cours: \n" + Manche.JoueurEnCours.Getpseudo();
+            joueurSituation.Text = Manche.actionJoueur.ToString();
             Debug.WriteLine($"{Manche.JoueurEnCours.Getpseudo()}");
 
             //Debug provisoire
@@ -37,16 +38,17 @@ namespace Perudo.Views
                 ValeurJoueur0Des += Des.valeur + " ";
             }
             Debug.WriteLine($"{Partie.MainPartie.JoueurList[0].Getpseudo()}: {ValeurJoueur0Des}");
-            string ValeurJoueur1Des = "Mes dés : ";
+            string ValeurJoueur1Des = "Mes dés : \n";
             foreach (var Des in Partie.MainPartie.JoueurList[1].GetDes())
             {
                 ValeurJoueur1Des += Des.valeur + " ";
             }
+            DesJoueur.Text = ValeurJoueur1Des;
             Debug.WriteLine($"{Partie.MainPartie.JoueurList[1].Getpseudo()}: {ValeurJoueur1Des}");
             //Fin du débug provisoire
             if (Manche.AncienneEnchere != null)
             {
-                Enchere.Text = $"{Manche.AncienneEnchere.nb} dés de {Manche.AncienneEnchere.de}";
+                Enchere.Text = $"Dernière enchère : \n {Manche.AncienneEnchere.nb} dés de {Manche.AncienneEnchere.de}";
             }
         }
 
@@ -64,8 +66,23 @@ namespace Perudo.Views
 	        {
 	            Debug.WriteLine(exception);
 	        }
-	        Decision decision = new Decision(Action.encherir, valeurDes, nbValeurDe);
-            Manche.MainManche.Traiter(decision);
+	        if (Manche.AncienneEnchere != null)
+	        {
+	            if (nbValeurDe >= Manche.AncienneEnchere.nb)
+	            {
+	                if (valeurDes >= Manche.AncienneEnchere.de)
+	                {
+                        Decision decision = new Decision(Action.encherir, valeurDes, nbValeurDe);
+	                    Manche.MainManche.Traiter(decision);
+	                }
+	            }
+	            joueurSituation.Text = "Votre enchère doit etre supérieure à la précédente";
+            }
+	        else
+	        {
+	            Decision decision = new Decision(Action.encherir, valeurDes, nbValeurDe);
+	            Manche.MainManche.Traiter(decision);
+	        }
         }
 
         void Click_Kelza(object sender, EventArgs e)

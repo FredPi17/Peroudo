@@ -25,15 +25,16 @@ namespace ConsoleApp1
             this.AddIA(nbMachines, nbHumains + nbMachines, niveau);
 
             Manche.MainManche = new Manche(JoueurList);
-            
+
+        
             Partie.MainPartie = this;
         }
 
-        public void AddHumain(int nbJoueurs)
+        public void AddJoueur(int nbJoueurs)
         {
             for (int i = 0; i < nbJoueurs; i++)
             {
-                Joueur Joueur = new Humain("joueur" + i, i, Randomizer);
+                Joueur Joueur = new Humain("joueur" + i, 0, Randomizer);
                 JoueurList.Add(Joueur);
             }
         }

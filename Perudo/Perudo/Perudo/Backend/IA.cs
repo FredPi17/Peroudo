@@ -6,34 +6,25 @@ using ConsoleApp1;
 namespace Perudo.Backend
 {
     class IA : Joueur
-    {                    
+    {
         ///Propriétés
         private Niveau myNiveau;
-        private int nbTotalDes;
-        private List<Tuple<int, int>> listJoueurDes;
 
-       
         /// <summary>
         /// Constructeur d'IA
         /// </summary>
         /// <param name="choix">Le choix du niveau</param>
         /// <param name="id">l'index ou le numéro du joueur</param>
-        /// <param name="pseudo">Le pseudo de l'IA</param>
         /// <param name="randomizer">pour les dés</param>
-        public IA(Niveau choix, int id, string pseudo, Randomizer randomizer, int nbJoueur)
-            : base (id, pseudo, randomizer)
+        public IA(Niveau choix, int id, Randomizer randomizer)
+            : base(id, randomizer)
         {
             myNiveau = choix;
             typeJ = TypeJoueur.ordinateur;
-            listJoueurDes = new List<Tuple<int, int>>();
-            for (int i = 0; i < nbJoueur; i++)
-            {
-                listJoueurDes.Add(new Tuple<int, int>(i, 5));
-            }
         }
-                
+
         /// <summary>
-        /// Permet a l'IA de jouer
+        /// Cette méthode permet a l'IA de jouer
         /// </summary>
         /// <returns>une decision</returns>
         public override Decision Jouer(List<Des> listDes)
@@ -52,60 +43,35 @@ namespace Perudo.Backend
             switch (myNiveau)
             {
                 case Niveau.Facile:
-                    { 
+                    {
                         Random rng = new Random();
                         int choix = rng.Next(0, 6);
                         if (choix == 0)
                         {
-                            dec = new Decision(Backend.Action.bluff);
-                            return dec;
+                            ///bluff
                         }
                         else if (choix == 1)
                         {
-                            if (olddec.de+1 > 6)
-                            {
-                                dec = new Decision(Backend.Action.encherir, olddec.de, olddec.nb + 1);
-                                return dec;
-                            } else
-                            {
-                                dec = new Decision(Backend.Action.encherir, olddec.de + 1, olddec.nb);
-                                return dec;
-                            }
+                            ///encherir sur de
                         }
                         else if (choix == 2)
                         {
-                            dec = new Decision(Backend.Action.encherir, olddec.de, olddec.nb + 1);
-                            return dec;
+                            ///encherir sur nb
                         }
                         else if (choix == 3)
                         {
-                            double res = olddec.nb / 2;
-                            double rnd = Math.Round(res);
-                            int paco = Convert.ToInt32(rnd);
-                            dec = new Decision(Backend.Action.encherir, 1, paco);
-                            return dec;
+                            ///encherir perudo
                         }
                         else if (choix == 4)
                         {
-                            if (olddec.de + 1 > 6)
-                            {
-                                dec = new Decision(Backend.Action.encherir, olddec.de, olddec.nb + 1);
-                                return dec;
-                            }
-                            else
-                            {
-                                dec = new Decision(Backend.Action.encherir, olddec.de + 1, olddec.nb + 1);
-                                return dec;
-                            }
+                            ///encherir de et nb
                         }
                         else if (choix == 5)
                         {
-                            dec = new Decision(Backend.Action.calza);
-                            return dec;
+                            ///calza
                         }
                     }
                     break;
-                   
 
                 case Niveau.Moyen:
                     {
@@ -118,19 +84,24 @@ namespace Perudo.Backend
                         {
                             if (Y >= 0 && Y < 5 )
                             {
-                                dec = new Decision(Backend.Action.encherir, olddec.de, olddec.nb+1);
-
+                                ///TODO
                             }
-                            else if (olddec.de+1 <= 6 )
+                            else if (de < 6)
                             {
-                                dec = new Decision(Backend.Action.encherir, olddec.de+1, olddec.nb);
+                                ///encherir sur de
                             }
                             else
                             {
-                                double res = olddec.nb / 2;
-                                double rnd = Math.Round(res);
-                                int paco = Convert.ToInt32(rnd);
-                                dec = new Decision(Backend.Action.encherir, 1, paco);
+                                Random rng = new Random();
+                                int choix = rng.Next(0, 2);
+                                if (choix == 0)
+                                {
+                                    ///bluff
+                                }
+                                else if (choix == 1)
+                                {
+                                    ///calza
+                                }
                             }
                         }
                         else
@@ -155,11 +126,11 @@ namespace Perudo.Backend
                         {
                             if (listDes[i].valeur == "1")
                             {
-                                paco++;
+                                ///encherir sur de
                             }
                             else if (listDes[i].valeur == "2")
                             {
-                                deux++;
+                                ///enchrir sur nb
                             }
                             else if (listDes[i] .valeur == "3")
                             {
@@ -179,74 +150,17 @@ namespace Perudo.Backend
                             }
 
                         }
-
-                        if ((olddec.de == 1 && olddec.nb == paco) ||
-                            (olddec.de == 2 && olddec.nb == deux) ||
-                            (olddec.de == 3 && olddec.nb == trois) ||
-                            (olddec.de == 4 && olddec.nb == quatre) ||
-                            (olddec.de == 5 && olddec.nb == cinq) ||
-                            (olddec.de == 6 && olddec.nb == six) )
-                        {
-                            dec = new Decision(Backend.Action.calza);
-                        }
-                        else if ((olddec.de == 1 && olddec.nb > paco) ||
-                            (olddec.de == 2 && olddec.nb > deux) ||
-                            (olddec.de == 3 && olddec.nb > trois) ||
-                            (olddec.de == 4 && olddec.nb > quatre) ||
-                            (olddec.de == 5 && olddec.nb > cinq) ||
-                            (olddec.de == 6 && olddec.nb > six))
-                        {
-                            dec = new Decision(Backend.Action.bluff);
-                        }
-                        else
-                        {
-                            dec = new Decision(Backend.Action.encherir, olddec.de, olddec.nb + 1);
-                        }
-
-                        if (choix > 6)
-                        {
-                            if (choix == 7)
-                            {
-                                dec = new Decision(Backend.Action.bluff);
-                            }
-                            else if (choix == 8)
-                            {
-                                if (olddec.de + 1 > 6)
-                                {
-                                    dec = new Decision(Backend.Action.encherir, olddec.de, olddec.nb + 1);
-                                }
-                                else
-                                {
-                                    dec = new Decision(Backend.Action.encherir, olddec.de + 1, olddec.nb);
-                                }
-                            }
-                            else if (choix == 9)
-                            {
-                                dec = new Decision(Backend.Action.encherir, olddec.de, olddec.nb + 1);
-                            }
-                            else if (choix == 10)
-                            {
-                                dec = new Decision(Backend.Action.calza);
-                            }  
-                        } 
-
                     }
-                    return dec;
+                    break;
             }
             return null;
 
         }
 
-        int CalculX(Decision olddec)
-        {
-            int x = olddec.nb / nbTotalDes;
-            return x; 
-        } 
 
-        int CalculY(Decision olddec)
+        public override Action Jouer()
         {
-            int y = (olddec.nb - Combien(olddec.de)) / (nbTotalDes - nbDes);
-            return y;
+            throw new NotImplementedException();
         }
 
         public override void Resultat(int idJoueur, bool perdu)

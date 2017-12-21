@@ -24,7 +24,7 @@
                 <Button x:Name="Kelza" Text="Kelza" Clicked="Click_Kelza" Grid.Row="4" Grid.Column="3"/>
                 <Button x:Name="Bluff" Text="Bluff" Clicked="Click_Bluff" Grid.Row="4" Grid.Column="2"/>
                 <Label x:Name="Round" Text="" Grid.Row="1" Grid.Column="3" FontSize="25"/>
-                <Label x:Name="JoueurEnCours" Text="" Grid.Row="0" Grid.Column="0" FontSize="25"/>
+                <Label x:Name="JoueurEnCours" Text="" Grid.Row="0" Grid.Column="0"/>
                 <Entry x:Name="Dés" Placeholder="Nombre de dés" Grid.Row="3" Grid.Column="2"/>
                 <Entry x:Name="ValeursDés" Placeholder="Valeurs des dés" Grid.Row="3" Grid.Column="3"/>
                 <Label x:Name="numManche" Text="" Grid.Row="0" Grid.Column="3" FontSize="25"/>
@@ -32,13 +32,13 @@
                 <Label x:Name ="Enchere"  Text="" Grid.Row="0" Grid.Column="2"/>
                 <Label x:Name="joueurSituation" Text="" Grid.Row="2" Grid.Column="1" TextColor="Red"/>
                 
-                <Label Text="1 0" Grid.Row="1" Grid.Column="0"/>
-                <Label Text="1 1" Grid.Row="1" Grid.Column="1"/>
-                <Label Text="1 2" Grid.Row="1" Grid.Column="2"/>
-                <Label Text="2 0" Grid.Row="2" Grid.Column="0"/>
-                <Label Text="2 2" Grid.Row="2" Grid.Column="2"/>
-                <Label Text="2 3" Grid.Row="2" Grid.Column="3"/>
-                <Label Text="3 1" Grid.Row="3" Grid.Column="1"/>
+                <Label Grid.Row="1" Grid.Column="0"/>
+                <Label Grid.Row="1" Grid.Column="1"/>
+                <Label Grid.Row="1" Grid.Column="2"/>
+                <Label Grid.Row="2" Grid.Column="0"/>
+                <Label Grid.Row="2" Grid.Column="2"/>
+                <Label Grid.Row="2" Grid.Column="3"/>
+                <Label Grid.Row="3" Grid.Column="1"/>
                 <Button x:Name="Save" Text="Générer la save" Clicked="Save_OnClicked" Grid.Row="3" Grid.Column="0"/>
                 <Entry x:Name="json" Text="" Grid.Row="4" Grid.Column="0"/>
                 <Label Text="4 1" Grid.Row="4" Grid.Column="1"/>

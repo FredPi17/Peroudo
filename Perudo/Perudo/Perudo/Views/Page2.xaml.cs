@@ -30,7 +30,8 @@ namespace Perudo.Views
 	        {
                 humains = Int32.Parse(Humans.Text);
                 machine = Int32.Parse(Machine.Text);
-                
+
+	           
             }
 	        catch (Exception exception)
 	        {
